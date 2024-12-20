@@ -7,6 +7,8 @@ import Login from "./sComponent/Login";
 import SignUp from "./sComponent/signup";
 import Dashboard from "./bComponent/Dashboard";
 import Template1 from "./bComponent/Template1";
+import ForgetPassword from "./sComponent/forgetPassword";
+import ResetPassword from "./sComponent/ResetPassword";
 
 export default function App() {
   return (
@@ -15,6 +17,9 @@ export default function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/forget" element={<ForgetPassword />} />
+          <Route path="/admin/resetpassword" element={<ResetPassword />} />
+
           <Route path="/" element={<Dashboard />} />
           <Route path="/Template1" element={<Template1 />} />
           <Route path="/Template2" element={<Template2 />} />
