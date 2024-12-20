@@ -11,11 +11,8 @@ import cors from "cors";
 const app = express();
 const PORT = 2024
 
-// app.use(
-//   cors({
-//     origin: ["http://localhost:5173"],
-//   })
-// );
+app.use(cors({ origin: ["http://localhost:5173"] }));
+
 
 app.use(morgan("common"));
 app.use(compression());

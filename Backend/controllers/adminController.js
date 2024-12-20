@@ -5,26 +5,28 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import nodemailer from "nodemailer";
 
+
+
 const signUp = async (req, res) => {
   try {
-    const { name, email, password, address, phone, organization, gender, designation, Aadhar_Card_Number } = req.body;
+    const { name, email, password, address, phone, gender } = req.body;
 
-    // Hash the password
     const hashedPass = await argon2.hash(password);
 
-    // Create a new admin user with all fields
-    const user = new adminData({ name, email, password: hashedPass, address, phone, organization, gender, designation, Aadhar_Card_Number });
+    const user = new adminData({
+      password: hashedPass,
+      name, email, address, phone, gender
+    });
 
     await user.save();
     res.status(200).json({
-      user: { name: user.name, email: user.email, address: user.address, phone: user.phone, organization: user.organization, gender: user.gender },
-      msg: "Signup Successfully"
+      user: { name: user.name, email: user.email, address: user.address, phone: user.phone, gender: user.gender },
+      msg: "Signup Successfully",
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
-
 
 const login = async (req, res) => {
   try {
@@ -32,7 +34,7 @@ const login = async (req, res) => {
     const user = await adminData.findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ msg: "Invalid password / user not found" });
+      return res.status(404).json({ msg: "Invalid password or user not found" });
     }
 
     const correctPass = await argon2.verify(user.password, password);
@@ -43,14 +45,15 @@ const login = async (req, res) => {
           id: user._id,
           name: user.name,
         },
-        process.env.JWT_LOGIN
+        process.env.JWT_LOGIN,
+        { expiresIn: "1h" }
       );
-      res.status(200).json({ token: token });
+      res.status(200).json({ token });
     } else {
-      res.status(404).json({ msg: "Invalid password / user not found" });
+      res.status(400).json({ msg: "Invalid password or user not found" });
     }
   } catch (error) {
-    res.status(500).json(error);
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -79,7 +82,7 @@ const forgetpassword = async (req, res) => {
       subject: "RESET Password Link",
       html: `
             <p>CLICK on the link below to reset your password</p>
-            <a href = "http://localhost:2024/admin/resetpassword?token=${refreshToken}">RESET password</a>
+            <a href = "http://localhost:5173/admin/resetpassword?token=${refreshToken}">RESET password</a>
           `,
     };
     await transporter.sendMail(mailOptions);
@@ -93,8 +96,6 @@ const forgetpassword = async (req, res) => {
 const resetpassword = async (req, res) => {
   try {
     const { token, newPassword } = req.body;
-    console.log(token, newPassword)
-    console.log(newPassword, "this is a new pass");
     const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
     const user = await adminData.findOne({
       refreshToken: hashedToken,
