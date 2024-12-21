@@ -1,19 +1,20 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Navbar = ({ title }) => {
+const Navbarp = () => {
   return (
-    <header style={{ position: "absolute", top: "0", left: "0", width: "100%", zIndex: "100" }}>
+    <header style={{ position: "fixed", top: "0", left: "0", width: "100%", zIndex: "100" }}>
       <nav
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "20px 20px",
+          padding: "20px",
           backgroundColor: "rgba(0, 0, 0, 0.1)",
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          <h1 style={{ color: "black", margin: 0 }}>{title}</h1>
+          <h1 style={{ color: "black", margin: 0 }}>Product</h1>
           <ul
             style={{
               display: "flex",
@@ -24,13 +25,13 @@ const Navbar = ({ title }) => {
             }}
           >
             <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-              <a href="/" style={{ color: "black", textDecoration: "none" }}>Home</a>
+              <Link to="/products" style={{ color: "black", textDecoration: "none" }}>Home</Link>
             </li>
             <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-              <a href="/about" style={{ color: "black", textDecoration: "none" }}>About</a>
+              <Link to="/AboutP" style={{ color: "black", textDecoration: "none" }}>About</Link>
             </li>
             <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-              <a href="/contact" style={{ color: "black", textDecoration: "none" }}>Contact</a>
+              <Link to="/ContactP" style={{ color: "black", textDecoration: "none" }}>Contact</Link>
             </li>
           </ul>
         </div>
@@ -49,4 +50,4 @@ const Navbar = ({ title }) => {
   );
 };
 
-export default Navbar;
+export default Navbarp;

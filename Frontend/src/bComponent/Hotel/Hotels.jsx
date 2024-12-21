@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 
-function FreshHotelBooking() {
+function Hotels() {
   const [hotels, setHotels] = useState([
     {
       id: 1,
@@ -119,8 +119,8 @@ function FreshHotelBooking() {
 
   return (
     <>
-      <Navbar />
-      <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f8f9fa", marginTop:"80px" }}>
+      <Navbar></Navbar>
+      <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f8f9fa", marginTop: "80px" }}>
         {/* Hero Section */}
         <header
           style={{
@@ -385,4 +385,4 @@ function FreshHotelBooking() {
   );
 }
 
-export default FreshHotelBooking;
+export default Hotels;

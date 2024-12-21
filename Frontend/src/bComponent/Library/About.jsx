@@ -1,10 +1,9 @@
-import React from 'react';
 import Navbar from './Navbar';
 
-const AboutPage = () => {
+const AboutL = () => {
   return (
     <>
-    <Navbar />
+    <Navbar/>
     <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f9f9f9', padding: '0' ,marginTop:"80px"}}>
     
       <header
@@ -174,4 +173,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default AboutL;

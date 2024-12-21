@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 
-function LibraryTemplateNewLayout() {
+function Libraries() {
   const [books, setBooks] = useState([
     {
       id: 1,
@@ -431,4 +431,4 @@ function LibraryTemplateNewLayout() {
   );
 }
 
-export default LibraryTemplateNewLayout;
+export default Libraries;
