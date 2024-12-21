@@ -41,7 +41,7 @@ function Template1() {
     },
     {
       id: 7,
-      name: "Noise Cancelling Headphones",
+      name: "Headphones",
       price: 249,
       image: "https://m.media-amazon.com/images/I/51EXj4BRQaL.jpg",
     },
@@ -133,10 +133,7 @@ function Template1() {
                 <a href="/about" style={{ color: "white", textDecoration: "none" }}>About</a>
               </li>
               <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-                <a href="/products" style={{ color: "white", textDecoration: "none" }}>Products</a>
-              </li>
-              <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-                <a href="/cart" style={{ color: "white", textDecoration: "none" }}>Cart</a>
+                <a href="/contact" style={{ color: "white", textDecoration: "none" }}>Contact</a>
               </li>
             </ul>
           </div>
@@ -181,6 +178,7 @@ function Template1() {
               right: "10px",
               backgroundColor: "#007bff",
               color: "white",
+              margin:"20px",
               padding: "10px",
               borderRadius: "5px",
               border: "none",
@@ -252,56 +250,71 @@ function Template1() {
 
         <section style={{ padding: "20px" }}>
           <h2>Our Products</h2>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", 
+            gap: "20px",
+            justifyItems: "center",
+          }}>
             {products.map((product) => (
               <div
                 key={product.id}
                 style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  height:"450px",
+                  width:"280px",
+                  padding:"5px",
                   border: "1px solid #ccc",
                   borderRadius: "10px",
                   overflow: "hidden",
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                  maxWidth: "300px",
                   textAlign: "center",
                 }}
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                  style={{
+                    width: "100%",
+                    height: "250px",
+                    objectFit: "cover",
+                  }}
                 />
-                <div style={{ padding: "10px" }}>
+                <div style={{ padding: "10px", width: "100%" }}>
                   <h3 style={{ margin: "10px 0" }}>{product.name}</h3>
                   <p style={{ color: "#555", marginBottom: "10px" }}>${product.price}</p>
-                  <button
-                    onClick={() => handleAddToCart(product.id)}
-                    style={{
-                      backgroundColor: "#007bff",
-                      color: "white",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      border: "none",
-                      cursor: "pointer",
-                      width: "100%",
-                    }}
-                  >
-                    Add to Cart
-                  </button>
-                  <button
-                    onClick={() => handleEditProduct(product)}
-                    style={{
-                      backgroundColor: "#ffc107",
-                      color: "white",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      border: "none",
-                      cursor: "pointer",
-                      width: "100%",
-                      marginTop: "10px",
-                    }}
-                  >
-                    Edit
-                  </button>
+                  <div style={{ display: "flex", justifyContent: "space-between" ,paddingTop:"30px"}}>
+                    <button
+                      onClick={() => handleAddToCart(product.id)}
+                      style={{
+                        backgroundColor: "#007bff",
+                        color: "white",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        border: "none",
+                        cursor: "pointer",
+                        width: "48%", 
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                    <button
+                      onClick={() => handleEditProduct(product)}
+                      style={{
+                        backgroundColor: "#ffc107",
+                        color: "white",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        border: "none",
+                        cursor: "pointer",
+                        width: "48%", 
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -311,6 +324,7 @@ function Template1() {
         {editingProduct && (
           <div
             style={{
+              width:"300px",
               position: "fixed",
               top: "50%",
               left: "50%",
@@ -363,9 +377,11 @@ function Template1() {
                   backgroundColor: "#28a745",
                   color: "white",
                   padding: "10px",
+                  margin:"5px",
                   borderRadius: "5px",
                   border: "none",
                   cursor: "pointer",
+                  width: "90%",
                 }}
               >
                 Save Changes
@@ -379,7 +395,8 @@ function Template1() {
                   borderRadius: "5px",
                   border: "none",
                   cursor: "pointer",
-                  marginLeft: "10px",
+                  marginLeft: "5px",
+                  width: "90%",
                 }}
               >
                 Cancel
