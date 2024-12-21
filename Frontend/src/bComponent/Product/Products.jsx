@@ -5,13 +5,13 @@ function Products() {
   const [products, setProducts] = useState([
     {
       id: 1,
-      name: "Bluetooth Speaker",
+      name: "Speaker",
       price: 199,
       image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MW443?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1716251410589",
     },
     {
       id: 2,
-      name: "Wireless Headphones",
+      name: "Headphones",
       price: 499,
       image: "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MQTR3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1687660671097",
     },
