@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 function Template1() {
   const [products, setProducts] = useState([
@@ -41,7 +42,7 @@ function Template1() {
     },
     {
       id: 7,
-      name: "Noise Cancelling Headphones",
+      name: "Headphones",
       price: 249,
       image: "https://m.media-amazon.com/images/I/51EXj4BRQaL.jpg",
     },
@@ -104,55 +105,10 @@ function Template1() {
   };
 
   return (
-    <div style={{ backgroundColor: "white", width: "100%", padding: "0", margin: "0", fontFamily: "sans-serif" }}>
-      <header style={{ position: "absolute", top: "0", left: "0", width: "100%", zIndex: "1000" }}>
-        <nav
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "30px 20px",
-            backgroundColor: "rgba(0, 0, 0, 0)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <h1 style={{ color: "white", margin: 0 }}>{title}</h1>
-            <ul
-              style={{
-                display: "flex",
-                listStyle: "none",
-                margin: 0,
-                padding: 0,
-                marginLeft: "20px",
-              }}
-            >
-              <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-                <a href="/" style={{ color: "white", textDecoration: "none" }}>Home</a>
-              </li>
-              <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-                <a href="/about" style={{ color: "white", textDecoration: "none" }}>About</a>
-              </li>
-              <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-                <a href="/products" style={{ color: "white", textDecoration: "none" }}>Products</a>
-              </li>
-              <li style={{ margin: "0 10px", padding: "10px", cursor: "pointer" }}>
-                <a href="/cart" style={{ color: "white", textDecoration: "none" }}>Cart</a>
-              </li>
-            </ul>
-          </div>
-          <input
-            type="text"
-            placeholder="Search..."
-            style={{
-              width: "150px",
-              padding: "5px",
-              borderRadius: "5px",
-              border: "0",
-            }}
-          />
-        </nav>
-      </header>
-
+    <>
+    <Navbar title={title} />
+    <div style={{ backgroundColor: "white", width: "100%", padding: "0", margin: "0", fontFamily: "sans-serif",marginTop:"80px" }}>
+      
       <main>
         <div className="hero" style={{ position: "relative" }}>
           <img
@@ -181,6 +137,7 @@ function Template1() {
               right: "10px",
               backgroundColor: "#007bff",
               color: "white",
+              margin:"20px",
               padding: "10px",
               borderRadius: "5px",
               border: "none",
@@ -252,56 +209,71 @@ function Template1() {
 
         <section style={{ padding: "20px" }}>
           <h2>Our Products</h2>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", 
+            gap: "20px",
+            justifyItems: "center",
+          }}>
             {products.map((product) => (
               <div
                 key={product.id}
                 style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  height:"450px",
+                  width:"280px",
+                  padding:"5px",
                   border: "1px solid #ccc",
                   borderRadius: "10px",
                   overflow: "hidden",
                   boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-                  maxWidth: "300px",
                   textAlign: "center",
                 }}
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                  style={{
+                    width: "100%",
+                    height: "250px",
+                    objectFit: "cover",
+                  }}
                 />
-                <div style={{ padding: "10px" }}>
+                <div style={{ padding: "10px", width: "100%" }}>
                   <h3 style={{ margin: "10px 0" }}>{product.name}</h3>
                   <p style={{ color: "#555", marginBottom: "10px" }}>${product.price}</p>
-                  <button
-                    onClick={() => handleAddToCart(product.id)}
-                    style={{
-                      backgroundColor: "#007bff",
-                      color: "white",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      border: "none",
-                      cursor: "pointer",
-                      width: "100%",
-                    }}
-                  >
-                    Add to Cart
-                  </button>
-                  <button
-                    onClick={() => handleEditProduct(product)}
-                    style={{
-                      backgroundColor: "#ffc107",
-                      color: "white",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      border: "none",
-                      cursor: "pointer",
-                      width: "100%",
-                      marginTop: "10px",
-                    }}
-                  >
-                    Edit
-                  </button>
+                  <div style={{ display: "flex", justifyContent: "space-between" ,paddingTop:"30px"}}>
+                    <button
+                      onClick={() => handleAddToCart(product.id)}
+                      style={{
+                        backgroundColor: "#007bff",
+                        color: "white",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        border: "none",
+                        cursor: "pointer",
+                        width: "48%", 
+                      }}
+                    >
+                      Add to Cart
+                    </button>
+                    <button
+                      onClick={() => handleEditProduct(product)}
+                      style={{
+                        backgroundColor: "#ffc107",
+                        color: "white",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        border: "none",
+                        cursor: "pointer",
+                        width: "48%", 
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -311,6 +283,7 @@ function Template1() {
         {editingProduct && (
           <div
             style={{
+              width:"300px",
               position: "fixed",
               top: "50%",
               left: "50%",
@@ -363,9 +336,11 @@ function Template1() {
                   backgroundColor: "#28a745",
                   color: "white",
                   padding: "10px",
+                  margin:"5px",
                   borderRadius: "5px",
                   border: "none",
                   cursor: "pointer",
+                  width: "90%",
                 }}
               >
                 Save Changes
@@ -379,7 +354,8 @@ function Template1() {
                   borderRadius: "5px",
                   border: "none",
                   cursor: "pointer",
-                  marginLeft: "10px",
+                  marginLeft: "5px",
+                  width: "90%",
                 }}
               >
                 Cancel
@@ -389,6 +365,7 @@ function Template1() {
         )}
       </main>
     </div>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import Template2 from "./Template2.jsx";
 import ConstructionTemplate from "./Template3.jsx";
 import LibraryTemplate from "./Library-template.jsx";
 import HotelBookingTemplate from "./Hotel-template.jsx";
+import Navbar from "./Navbar.jsx";
 
 const templates = [
   {
@@ -48,7 +49,7 @@ const Dashboard = () => {
           <Link key={template.id} to={template.path} style={styles.link}>
             <div style={styles.templateCard}>
               <img src={template.image} alt={template.name} style={styles.image} />
-              {/* <div style={styles.templateName}>{template.name}</div> */}
+              
             </div>
           </Link>
         ))}
@@ -60,6 +61,7 @@ const Dashboard = () => {
         <Route path="/template3" element={<ConstructionTemplate />} />
         <Route path="/library-template" element={<LibraryTemplate />} />
         <Route path="/hotel-template" element={<HotelBookingTemplate />} />
+        <Route path="/navbar" element={<Navbar />} />
       </Routes>
     </div>
   );
@@ -68,7 +70,6 @@ const Dashboard = () => {
 const styles = {
   dashboard: {
     height: "100vh",
-    backgroundColor: "white",
     textAlign: "center",
     padding: "20px",
     fontFamily: "Arial, sans-serif",

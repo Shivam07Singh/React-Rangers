@@ -10,6 +10,9 @@ import ConstructionTemplate from "./bComponent/Template3.jsx"; {/* Fixed typo in
 import LibraryTemplate from "./bComponent/Library-template.jsx";
 import HotelBookingTemplate from "./bComponent/Hotel-template.jsx";
 import Landingpage from "./components/Landingpage.jsx";
+import AboutPage from "./bComponent/About.jsx";
+import ContactPage from "./bComponent/Contact.jsx";
+import Navbar from "./bComponent/Navbar.jsx";
 
 export default function App() {
   return (
@@ -28,7 +31,9 @@ export default function App() {
           <Route path="/template3" element={<ConstructionTemplate />} />
           <Route path="/library-template" element={<LibraryTemplate />} />
           <Route path="/hotel-template" element={<HotelBookingTemplate />} />
-
+          <Route path="/about" element={<AboutPage/>}/>
+          <Route path="/contact" element={<ContactPage/>}/>
+          <Route path="/navbar" element={<Navbar/>}/>
         </Routes>
       </div>
     </Router>

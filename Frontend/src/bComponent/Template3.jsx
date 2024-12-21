@@ -14,7 +14,7 @@ function ConstructionTemplate() {
     },
     {
       id: 2,
-      name: "Bridge B",
+      name: "Building B",
       budget: 1500000,
       description:
         "A sleek and durable bridge designed to withstand heavy traffic.",
@@ -23,7 +23,7 @@ function ConstructionTemplate() {
     },
     {
       id: 3,
-      name: "Road C",
+      name: "Building C",
       budget: 750000,
       description: "A newly constructed road aimed to enhance connectivity.",
       image:
@@ -35,7 +35,19 @@ function ConstructionTemplate() {
     "https://images.pexels.com/photos/273209/pexels-photo-273209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
   );
   const [title, setTitle] = useState("ConstructoHub");
-  const [isEditMode, setIsEditMode] = useState(false);
+
+  const [editProjectId, setEditProjectId] = useState(null);
+  const [editedProject, setEditedProject] = useState({
+    name: "",
+    budget: "",
+    image: "",
+  });
+
+  const [isHeroEditOpen, setIsHeroEditOpen] = useState(false);
+  const [editedHero, setEditedHero] = useState({
+    title: title,
+    heroImage: heroImage,
+  });
 
   const navigate = useNavigate();
 
@@ -43,12 +55,61 @@ function ConstructionTemplate() {
     navigate("/");
   };
 
-  const handleProjectChange = (id, field, value) => {
+  // Edit Project form handlers
+  const handleEditClick = (project) => {
+    setEditProjectId(project.id);
+    setEditedProject({
+      name: project.name,
+      budget: project.budget,
+      image: project.image,
+    });
+  };
+
+  const handleCancelProjectEdit = () => {
+    setEditProjectId(null);
+    setEditedProject({
+      name: "",
+      budget: "",
+      image: "",
+    });
+  };
+
+  const handleSaveProjectEdit = () => {
     setProjects((prevProjects) =>
       prevProjects.map((project) =>
-        project.id === id ? { ...project, [field]: value } : project
+        project.id === editProjectId
+          ? { ...project, ...editedProject }
+          : project
       )
     );
+    setEditProjectId(null);
+  };
+
+  const handleProjectInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedProject((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // Hero Section Edit handlers
+  const handleHeroInputChange = (e) => {
+    const { name, value } = e.target;
+    setEditedHero((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSaveHeroEdit = () => {
+    setHeroImage(editedHero.heroImage);
+    setTitle(editedHero.title);
+    setIsHeroEditOpen(false);
+  };
+
+  const handleCancelHeroEdit = () => {
+    setIsHeroEditOpen(false);
   };
 
   return (
@@ -72,39 +133,19 @@ function ConstructionTemplate() {
             padding: "0 50px",
           }}
         >
-          <h1 style={{ color: "white", margin: 0 }}>
-            {isEditMode ? (
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                style={{
-                  padding: "5px",
-                  borderRadius: "5px",
-                  border: "1px solid #ccc",
-                }}
-              />
-            ) : (
-              title
-            )}
-          </h1>
+          <h1 style={{ color: "black", margin: 0 }}>{title}</h1>
 
           <div style={{ display: "flex", gap: "30px" }}>
-            <a href="#home" style={{ color: "white", textDecoration: "none" }}>
+            <a href="#home" style={{ color: "black", textDecoration: "none" }}>
               Home
             </a>
-            <a
-              href="#booking"
-              style={{ color: "white", textDecoration: "none" }}
-            >
-              Booking
-            </a>
-            <a href="#about" style={{ color: "white", textDecoration: "none" }}>
+
+            <a href="#about" style={{ color: "black", textDecoration: "none" }}>
               About
             </a>
             <a
               href="#contact"
-              style={{ color: "white", textDecoration: "none" }}
+              style={{ color: "black", textDecoration: "none" }}
             >
               Contact
             </a>
@@ -141,25 +182,11 @@ function ConstructionTemplate() {
 
       <main>
         <div className="hero" style={{ position: "relative" }}>
-          {isEditMode ? (
-            <input
-              type="text"
-              value={heroImage}
-              onChange={(e) => setHeroImage(e.target.value)}
-              style={{
-                width: "100%",
-                marginBottom: "10px",
-                padding: "5px",
-                fontSize: "1rem",
-              }}
-            />
-          ) : (
-            <img
-              src={heroImage}
-              alt="Hero Image"
-              style={{ width: "100%", height: "100vh", objectFit: "cover" }}
-            />
-          )}
+          <img
+            src={heroImage}
+            alt="Hero Image"
+            style={{ width: "100%", height: "100vh", objectFit: "cover" }}
+          />
           <h1
             style={{
               position: "absolute",
@@ -174,6 +201,22 @@ function ConstructionTemplate() {
           >
             {title}
           </h1>
+          <button
+            onClick={() => setIsHeroEditOpen(true)}
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              right: "20px",
+              padding: "10px 20px",
+              backgroundColor: "#007bff",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Edit Hero
+          </button>
         </div>
 
         <div
@@ -195,125 +238,212 @@ function ConstructionTemplate() {
                 borderRadius: "5px",
                 flex: "1 1 30%",
                 backgroundColor: "#fff",
-                transition: "all 0.3s ease-in-out",
               }}
             >
-              {isEditMode ? (
-                <input
-                  type="text"
-                  value={project.name}
-                  onChange={(e) =>
-                    handleProjectChange(project.id, "name", e.target.value)
-                  }
-                  style={{
-                    width: "100%",
-                    marginBottom: "5px",
-                    padding: "5px",
-                    fontSize: "1rem",
-                  }}
-                />
-              ) : (
-                <h3>{project.name}</h3>
-              )}
-
-              {isEditMode ? (
-                <input
-                  type="number"
-                  value={project.budget}
-                  onChange={(e) =>
-                    handleProjectChange(project.id, "budget", e.target.value)
-                  }
-                  style={{
-                    width: "100%",
-                    marginBottom: "5px",
-                    padding: "5px",
-                  }}
-                />
-              ) : (
-                <p>₹{project.budget}</p>
-              )}
-
-              {isEditMode ? (
-                <input
-                  type="text"
-                  value={project.image}
-                  onChange={(e) =>
-                    handleProjectChange(project.id, "image", e.target.value)
-                  }
-                  style={{
-                    width: "100%",
-                    marginBottom: "5px",
-                    padding: "5px",
-                  }}
-                />
-              ) : (
-                <img
-                  src={project.image}
-                  alt={project.name}
-                  style={{
-                    width: "100%",
-                    height: "200px",
-                    objectFit: "cover",
-                    borderRadius: "5px",
-                    marginBottom: "5px",
-                  }}
-                />
-              )}
+              <h3>{project.name}</h3>
+              <p>₹{project.budget}</p>
+              <img
+                src={project.image}
+                alt={project.name}
+                style={{
+                  width: "100%",
+                  height: "200px",
+                  objectFit: "cover",
+                  borderRadius: "5px",
+                  marginBottom: "5px",
+                }}
+              />
               <p>{project.description}</p>
+              <button
+                onClick={() => handleEditClick(project)}
+                style={{
+                  padding: "5px 10px",
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                Edit
+              </button>
             </div>
           ))}
         </div>
 
-        {/* About Section */}
-        <section style={{ padding: "40px 10px", backgroundColor: "#f4f4f4" }}>
-          <h2
+        {/* Edit Hero Form */}
+        {isHeroEditOpen && (
+          <div
             style={{
-              textAlign: "center",
-              fontSize: "2rem",
-              marginBottom: "10px",
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              backgroundColor: "white",
+              padding: "20px",
+              boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+              borderRadius: "10px",
+              zIndex: 1000,
+              width: "400px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
             }}
           >
-            About Us
-          </h2>
-          <p
-            style={{
-              fontSize: "1rem",
-              textAlign: "center",
-              maxWidth: "800px",
-              margin: "0 auto",
-            }}
-          >
-            ConstructoHub is a leading platform for modern construction
-            projects, showcasing high-quality projects and innovative designs in
-            the fields of buildings, roads, and bridges. We bring together
-            top-tier projects that redefine the future of construction.
-          </p>
-        </section>
+            <h3>Edit Hero</h3>
+            <label>
+              Title:
+              <input
+                type="text"
+                name="title"
+                value={editedHero.title}
+                onChange={handleHeroInputChange}
+                style={{
+                  padding: "8px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            </label>
+            <label>
+              Hero Image URL:
+              <input
+                type="text"
+                name="heroImage"
+                value={editedHero.heroImage}
+                onChange={handleHeroInputChange}
+                style={{
+                  padding: "8px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            </label>
 
-        {/* Contact Section */}
-        <section style={{ padding: "40px 10px", backgroundColor: "#e9e9e9" }}>
-          <h2
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button
+                onClick={handleSaveHeroEdit}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#28a745",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                Save
+              </button>
+              <button
+                onClick={handleCancelHeroEdit}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#dc3545",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Edit Project Form */}
+        {editProjectId && (
+          <div
             style={{
-              textAlign: "center",
-              fontSize: "2rem",
-              marginBottom: "10px",
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              backgroundColor: "white",
+              padding: "20px",
+              boxShadow: "0px 0px 20px rgba(0, 0, 0, 0.1)",
+              borderRadius: "10px",
+              zIndex: 1000,
+              width: "400px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
             }}
           >
-            Contact Us
-          </h2>
-          <p
-            style={{
-              fontSize: "1rem",
-              textAlign: "center",
-              maxWidth: "800px",
-              margin: "0 auto",
-            }}
-          >
-            Have any questions or inquiries? Get in touch with us at
-            info@constructohub.com. We're here to assist you with all your
-            construction-related needs.
-          </p>
-        </section>
+            <h3>Edit Project</h3>
+            <label>
+              Name:
+              <input
+                type="text"
+                name="name"
+                value={editedProject.name}
+                onChange={handleProjectInputChange}
+                style={{
+                  padding: "8px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            </label>
+            <label>
+              Budget:
+              <input
+                type="number"
+                name="budget"
+                value={editedProject.budget}
+                onChange={handleProjectInputChange}
+                style={{
+                  padding: "8px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            </label>
+            <label>
+              Image URL:
+              <input
+                type="text"
+                name="image"
+                value={editedProject.image}
+                onChange={handleProjectInputChange}
+                style={{
+                  padding: "8px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            </label>
+
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button
+                onClick={handleSaveProjectEdit}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#28a745",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                Save
+              </button>
+              <button
+                onClick={handleCancelProjectEdit}
+                style={{
+                  padding: "10px 20px",
+                  backgroundColor: "#dc3545",
+                  color: "white",
+                  border: "none",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </main>
 
       <footer
@@ -326,34 +456,6 @@ function ConstructionTemplate() {
       >
         <p>&copy; 2023 ConstructoHub</p>
       </footer>
-
-      <button
-        onClick={handleBackClick}
-        style={{
-          backgroundColor: "#f0f0f0",
-          color: "#007bff",
-          padding: "5px 10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-          margin: "20px",
-        }}
-      >
-        Back to Dashboard
-      </button>
-
-      <button
-        onClick={() => setIsEditMode((prevMode) => !prevMode)}
-        style={{
-          backgroundColor: "#f0f0f0",
-          color: "#007bff",
-          padding: "5px 10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-          margin: "20px",
-        }}
-      >
-        {isEditMode ? "Save" : "Edit"}
-      </button>
     </div>
   );
 }
