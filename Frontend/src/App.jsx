@@ -22,12 +22,20 @@ import AboutC from "./bComponent/Construction/About.jsx";
 import ContactC from "./bComponent/Construction/Contact.jsx";
 import AboutH from "./bComponent/Hotel/About.jsx";
 import ContactH from "./bComponent/Hotel/Contact.jsx";
+import BlogPage from "./components/BlogPage.jsx";
+import Contact from "./components/Contact.jsx";
+import About from "./components/About.jsx";
+
 
 export default function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
+
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forget" element={<ForgetPassword />} />
