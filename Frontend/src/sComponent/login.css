@@ -1,5 +1,5 @@
 
-body {
+/* body {
     font-family: Arial, sans-serif;
     background: wheat;
     margin: 0;
@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-}
+} */
 
 .login_container {
     background: #ffffff;

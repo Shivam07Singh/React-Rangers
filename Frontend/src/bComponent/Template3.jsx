@@ -55,10 +55,13 @@ function ConstructionTemplate() {
     <div className="container">
       <header
         style={{
-          backgroundImage:
-            "linear-gradient(90deg, #333333 0%, #666666 35%, #999999 100%)",
+          backgroundColor: "transparent",
           padding: "10px 0",
           fontFamily: "sans-serif",
+          position: "absolute",
+          width: "100%",
+          top: 0,
+          zIndex: 1000, // Ensure navbar is above the hero image
         }}
       >
         <nav
@@ -66,43 +69,68 @@ function ConstructionTemplate() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: "5px",
+            padding: "0 50px",
           }}
         >
-          {isEditMode ? (
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              style={{
-                padding: "5px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
-              }}
-            />
-          ) : (
-            <h1 style={{ color: "white", margin: 0 }}>{title}</h1>
-          )}
+          <h1 style={{ color: "white", margin: 0 }}>
+            {isEditMode ? (
+              <input
+                type="text"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                style={{
+                  padding: "5px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+            ) : (
+              title
+            )}
+          </h1>
+
+          <div style={{ display: "flex", gap: "30px" }}>
+            <a href="#home" style={{ color: "white", textDecoration: "none" }}>
+              Home
+            </a>
+            <a
+              href="#booking"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Booking
+            </a>
+            <a href="#about" style={{ color: "white", textDecoration: "none" }}>
+              About
+            </a>
+            <a
+              href="#contact"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Contact
+            </a>
+          </div>
 
           <div>
             <input
               type="text"
               placeholder="Search"
               style={{
-                padding: "5px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
+                padding: "10px",
+                borderRadius: "20px",
+                border: "none",
+                width: "200px",
+                outline: "none",
               }}
             />
             <button
               style={{
                 backgroundColor: "#007bff",
                 color: "white",
-                padding: "5px 10px",
-                borderRadius: "5px",
+                padding: "10px 20px",
+                borderRadius: "20px",
                 border: "none",
-                marginLeft: "5px",
-                fontFamily: "sans-serif",
+                marginLeft: "10px",
+                cursor: "pointer",
               }}
             >
               Search
@@ -129,20 +157,19 @@ function ConstructionTemplate() {
             <img
               src={heroImage}
               alt="Hero Image"
-              style={{ width: "100%", marginTop: "5px" }}
+              style={{ width: "100%", height: "100vh", objectFit: "cover" }}
             />
           )}
           <h1
             style={{
               position: "absolute",
-              top: "40%",
+              top: "50%",
               left: "50%",
-              transform: "translateX(-50%)",
+              transform: "translate(-50%, -50%)",
               color: "white",
               fontWeight: "bold",
-              fontFamily: "sans-serif",
-              fontSize: "2.5rem",
-              margin: 0,
+              fontSize: "3rem",
+              textShadow: "2px 2px 5px rgba(0, 0, 0, 0.7)",
             }}
           >
             {title}

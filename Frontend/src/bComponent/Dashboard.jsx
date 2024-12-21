@@ -10,56 +10,56 @@ const templates = [
   {
     id: 1,
     name: "Template 1",
-    image: "https://via.placeholder.com/300x200?text=Template+1",
-    path: "Template1",
+    image: "https://i.postimg.cc/KYggQTT4/SCR-20241221-jaam.jpg",
+    path: "/template1",
   },
   {
     id: 2,
     name: "Template 2",
-    image: "https://via.placeholder.com/300x200?text=Template+2",
-    path: "Template2",
+    image: "https://i.postimg.cc/j5HnYrZb/SCR-20241221-jahh.jpg",
+    path: "/template2",
   },
   {
     id: 3,
     name: "Template 3",
-    image: "https://via.placeholder.com/300x200?text=Template+2",
-    path: "Template3",
+    image: "https://i.postimg.cc/SRm2ytvz/SCR-20241221-jals.jpg",
+    path: "/template3",
   },
   {
     id: 4,
     name: "Template 4",
-    image: "https://via.placeholder.com/300x200?text=Template+2",
-    path: "Library-template",
+    image: "https://i.postimg.cc/qRTgL50Z/SCR-20241221-iyxi.jpg",
+    path: "/library-template",
   },
   {
     id: 5,
     name: "Template 5",
-    image: "https://via.placeholder.com/300x200?text=Template+2",
-    path: "Hotel-template",
+    image: "https://i.postimg.cc/rmMFWRCB/SCR-20241221-jhbt.jpg",
+    path: "/hotel-template",
   },
 ];
 
 const Dashboard = () => {
   return (
     <div style={styles.dashboard}>
-      <h1 style={styles.heading}>Select a website template</h1>
+      <h1 style={styles.heading}>Website Template</h1>
       <div style={styles.templateGrid}>
         {templates.map((template) => (
           <Link key={template.id} to={template.path} style={styles.link}>
             <div style={styles.templateCard}>
               <img src={template.image} alt={template.name} style={styles.image} />
-              <p style={styles.templateName}>{template.name}</p>
+              {/* <div style={styles.templateName}>{template.name}</div> */}
             </div>
           </Link>
         ))}
       </div>
 
       <Routes>
-        <Route path="Template1" element={<Template1 />} />
-        <Route path="Template2" element={<Template2 />} />
-        <Route path="Template3" element={<ConstructionTemplate />} />
-        <Route path="Library-template" element={<LibraryTemplate />} />
-        <Route path="Hotel-template" element={<HotelBookingTemplate />} />
+        <Route path="/template1" element={<Template1 />} />
+        <Route path="/template2" element={<Template2 />} />
+        <Route path="/template3" element={<ConstructionTemplate />} />
+        <Route path="/library-template" element={<LibraryTemplate />} />
+        <Route path="/hotel-template" element={<HotelBookingTemplate />} />
       </Routes>
     </div>
   );
@@ -67,32 +67,35 @@ const Dashboard = () => {
 
 const styles = {
   dashboard: {
+    height: "100vh",
+    backgroundColor: "white",
     textAlign: "center",
     padding: "20px",
     fontFamily: "Arial, sans-serif",
+    backgroundColor: "black",
   },
   heading: {
     fontSize: "2rem",
     marginBottom: "20px",
-    color: "#333",
+    color: "#fff",
   },
   templateGrid: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
     gap: "20px",
+    paddingtop:"10px"
   },
   templateCard: {
-    width: "300px",
+    height: "310px",
+    width: "320px",
     boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
     borderRadius: "10px",
     overflow: "hidden",
     cursor: "pointer",
     textAlign: "center",
     transition: "transform 0.3s ease",
-  },
-  templateCardHover: {
-    transform: "scale(1.05)",
+    backgroundColor: "green",
   },
   image: {
     width: "100%",

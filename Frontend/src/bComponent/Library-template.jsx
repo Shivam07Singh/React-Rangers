@@ -1,14 +1,13 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-function LibraryTemplate() {
+function LibraryTemplateNewLayout() {
   const [books, setBooks] = useState([
     {
       id: 1,
       title: "To Kill a Mockingbird",
       author: "Harper Lee",
       price: 499,
-      image: "https://example.com/tokillamockingbird.jpg",
+      image: "https://c8.alamy.com/comp/C91227/to-kill-a-mockingbird-by-harper-lee-C91227.jpg",
       genre: "Fiction",
       rating: 4.8,
     },
@@ -17,7 +16,7 @@ function LibraryTemplate() {
       title: "1984",
       author: "George Orwell",
       price: 399,
-      image: "https://example.com/1984.jpg",
+      image: "https://m.media-amazon.com/images/I/71kXYs4tCvL._AC_UF1000,1000_QL80_.jpg",
       genre: "Dystopian",
       rating: 4.6,
     },
@@ -26,262 +25,175 @@ function LibraryTemplate() {
       title: "The Great Gatsby",
       author: "F. Scott Fitzgerald",
       price: 299,
-      image: "https://example.com/thegreatgatsby.jpg",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKi5lknrw7SIwZ01RQRqyvtXz2bFxrUsGVpA&s",
       genre: "Classic",
       rating: 4.4,
     },
+    {
+      id: 4,
+      title: "Pride and Prejudice",
+      author: "Jane Austen",
+      price: 350,
+      image:
+        "https://rukminim2.flixcart.com/image/850/1000/kkec4280/book/d/h/d/pride-prejudice-original-imafzra6pfewjjwb.jpeg?q=20&crop=false",
+      genre: "Romance",
+      rating: 4.7,
+    },
+    {
+      id: 5,
+      title: "The Catcher in the Rye",
+      author: "J.D. Salinger",
+      price: 450,
+      image: "https://m.media-amazon.com/images/I/81OthjkJBuL.jpg",
+      genre: "Fiction",
+      rating: 4.5,
+    },
+    {
+      id: 6,
+      title: "Moby-Dick",
+      author: "Herman Melville",
+      price: 299,
+      image: "https://images.penguinrandomhouse.com/cover/9780143124672",
+      genre: "Adventure",
+      rating: 4.3,
+    },
   ]);
 
-  const [heroImage, setHeroImage] = useState("https://example.com/libraryhero.jpg");
-  const [title, setTitle] = useState("Library");
-  const [isEditMode, setIsEditMode] = useState(false);
-
-  const navigate = useNavigate();
-
   const handleAddToCollection = (bookId) => {
-    alert(`Added book ${bookId} to collection!`);
-  };
-
-  const handleBackClick = () => {
-    navigate("/");
-  };
-
-  const handleBookChange = (id, field, value) => {
-    setBooks((prevBooks) =>
-      prevBooks.map((book) => (book.id === id ? { ...book, [field]: value } : book))
-    );
+    alert(`Book ${bookId} added to your collection!`);
   };
 
   return (
-    <div className="container">
-      <header
+    <div style={{ fontFamily: "Arial, sans-serif", color: "#333" }}>
+      {/* Navbar */}
+      <nav
         style={{
-          backgroundImage: "linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%)",
-          padding: "10px 0",
-          fontFamily: "sans-serif",
+          backgroundColor: "#343a40",
+          color: "#fff",
+          padding: "15px",
+          textAlign: "center",
         }}
       >
-        <nav
+        <h1 style={{ margin: 0 }}>Digital Library</h1>
+        <input
+          type="text"
+          placeholder="Search books..."
           style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            padding: "5px",
+            marginTop: "10px",
+            padding: "10px",
+            borderRadius: "5px",
+            border: "1px solid #ccc",
+            outline: "none",
+            width: "60%",
           }}
-        >
-          {isEditMode ? (
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              style={{
-                padding: "5px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
-              }}
-            />
-          ) : (
-            <h1 style={{ color: "white", margin: 0 }}>{title}</h1>
-          )}
+        />
+      </nav>
 
-          <div>
-            <input
-              type="text"
-              placeholder="Search"
-              style={{
-                padding: "5px",
-                borderRadius: "5px",
-                border: "1px solid #ccc",
-              }}
-            />
-            <button
-              style={{
-                backgroundColor: "#007bff",
-                color: "white",
-                padding: "5px 10px",
-                borderRadius: "5px",
-                border: "none",
-                marginLeft: "5px",
-                fontFamily: "sans-serif",
-              }}
-            >
-              Search
-            </button>
-          </div>
-        </nav>
-      </header>
-
-      <main>
-        <div className="hero" style={{ position: "relative" }}>
-          {isEditMode ? (
-            <input
-              type="text"
-              value={heroImage}
-              onChange={(e) => setHeroImage(e.target.value)}
-              style={{
-                width: "100%",
-                marginBottom: "10px",
-                padding: "5px",
-                fontSize: "1rem",
-              }}
-            />
-          ) : (
-            <img src={heroImage} alt="Hero Image" style={{ width: "100%", marginTop: "5px" }} />
-          )}
-          <h1
-            style={{
-              position: "absolute",
-              top: "40%",
-              left: "70%",
-              transform: "translateX(-50%)",
-              color: "white",
-              fontWeight: "bold",
-              fontFamily: "sans-serif",
-              fontSize: "2.5rem",
-              margin: 0,
-            }}
-          >
-            {title}
-          </h1>
-        </div>
-
+      {/* Categories */}
+      <section style={{ backgroundColor: "#f8f9fa", padding: "20px" }}>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Browse by Genre</h2>
         <div
           style={{
             display: "flex",
+            justifyContent: "center",
+            gap: "20px",
             flexWrap: "wrap",
-            justifyContent: "space-between",
-            fontFamily: "sans-serif",
+          }}
+        >
+          {["Fiction", "Dystopian", "Classic", "Romance", "Adventure"].map((genre) => (
+            <button
+              key={genre}
+              style={{
+                padding: "10px 20px",
+                backgroundColor: "#007bff",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              {genre}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Book List */}
+      <main style={{ padding: "20px" }}>
+        <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Available Books</h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            maxWidth: "800px",
+            margin: "0 auto",
           }}
         >
           {books.map((book) => (
             <div
               key={book.id}
               style={{
-                width: "30%",
-                boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
-                padding: "10px",
-                margin: "10px",
-                borderRadius: "5px",
-                flex: "1 1 30%",
+                display: "flex",
+                gap: "20px",
+                padding: "15px",
+                border: "1px solid #ddd",
+                borderRadius: "10px",
+                backgroundColor: "#fff",
+                boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
               }}
             >
-              {isEditMode ? (
-                <input
-                  type="text"
-                  value={book.title}
-                  onChange={(e) => handleBookChange(book.id, "title", e.target.value)}
-                  style={{ width: "100%", marginBottom: "5px" }}
-                />
-              ) : (
-                <h3>{book.title}</h3>
-              )}
-
-              {isEditMode ? (
-                <input
-                  type="text"
-                  value={book.author}
-                  onChange={(e) => handleBookChange(book.id, "author", e.target.value)}
-                  style={{ width: "100%", marginBottom: "5px" }}
-                />
-              ) : (
-                <p>{book.author}</p>
-              )}
-
-              {isEditMode ? (
-                <input
-                  type="number"
-                  value={book.price}
-                  onChange={(e) => handleBookChange(book.id, "price", e.target.value)}
-                  style={{
-                    width: "100%",
-                    marginBottom: "5px",
-                    padding: "5px",
-                  }}
-                />
-              ) : (
-                <p>₹{book.price}</p>
-              )}
-
-              {isEditMode ? (
-                <input
-                  type="text"
-                  value={book.image}
-                  onChange={(e) => handleBookChange(book.id, "image", e.target.value)}
-                  style={{
-                    width: "100%",
-                    marginBottom: "5px",
-                    padding: "5px",
-                  }}
-                />
-              ) : (
-                <img
-                  src={book.image}
-                  alt={book.title}
-                  style={{ width: "100%", borderRadius: "5px" }}
-                />
-              )}
-
-              <p>{book.genre}</p>
-              <p>{book.rating} stars</p>
-
-              <button
-                onClick={() => handleAddToCollection(book.id)}
+              <img
+                src={book.image}
+                alt={book.title}
                 style={{
-                  backgroundColor: "#007bff",
-                  color: "white",
-                  padding: "5px 10px",
-                  borderRadius: "5px",
-                  border: "none",
+                  width: "150px",
+                  height: "200px",
+                  objectFit: "cover",
+                  borderRadius: "10px",
                 }}
-              >
-                Add to Collection
-              </button>
+              />
+              <div style={{ flex: 1 }}>
+                <h3>{book.title}</h3>
+                <p>Author: {book.author}</p>
+                <p>Genre: {book.genre}</p>
+                <p>Price: ₹{book.price}</p>
+                <p style={{ color: "#ff9800" }}>Rating: {book.rating} ★</p>
+                <button
+                  onClick={() => handleAddToCollection(book.id)}
+                  style={{
+                    marginTop: "10px",
+                    padding: "10px 15px",
+                    backgroundColor: "#007bff",
+                    color: "#fff",
+                    border: "none",
+                    borderRadius: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Add to Collection
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </main>
 
+      {/* Footer */}
       <footer
         style={{
-          backgroundColor: "black",
-          color: "white",
+          backgroundColor: "#343a40",
+          color: "#fff",
           textAlign: "center",
-          padding: "10px",
+          padding: "20px",
+          marginTop: "20px",
         }}
       >
-        <p>&copy; 2024 Library</p>
+        <p>&copy; 2024 Digital Library. All rights reserved.</p>
       </footer>
-
-      <button
-        onClick={handleBackClick}
-        style={{
-          backgroundColor: "#f0f0f0",
-          color: "#007bff",
-          padding: "5px 10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-          margin: "20px",
-        }}
-      >
-        Back to Dashboard
-      </button>
-
-      <button
-        onClick={() => setIsEditMode((prevMode) => !prevMode)}
-        style={{
-          backgroundColor: "#f0f0f0",
-          color: "#007bff",
-          padding: "5px 10px",
-          borderRadius: "5px",
-          border: "1px solid #ccc",
-          margin: "20px",
-        }}
-      >
-        {isEditMode ? "Save" : "Edit"}
-      </button>
     </div>
   );
 }
 
-export default LibraryTemplate;
-
+export default LibraryTemplateNewLayout;
