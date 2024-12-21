@@ -1,4 +1,5 @@
-body {
+/* Scoped styles for SignUp component */
+.signUp-page {
   font-family: Arial, sans-serif;
   background: linear-gradient(to right, #cfd9df, #e2ebf0); /* Updated gradient */
   margin: 0;
@@ -7,10 +8,10 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  overflow: auto; /* Enable scrolling */
+  overflow: auto;
 }
 
-.signup-container {
+.signUp-container {
   background: #ffffff;
   padding: 20px 40px; /* Adjust padding */
   border-radius: 15px;
@@ -23,17 +24,12 @@ body {
   transition: transform 0.3s ease-in-out;
 }
 
-.signup-container:hover {
+.signUp-container:hover {
   transform: scale(1.03);
 }
 
-.form-parent {
+.signUp-formParent {
   width: 100%;
-}
-
-#Welcome {
-  width: 120px;
-  margin-bottom: 20px;
 }
 
 h3 {
@@ -42,7 +38,7 @@ h3 {
   font-size: 1.8rem;
 }
 
-.input-group {
+.signUp-inputGroup {
   margin-bottom: 15px;
   text-align: left;
 }
@@ -54,7 +50,7 @@ label {
   font-weight: bold;
 }
 
-input {
+.signUp-input {
   width: 100%;
   padding: 12px;
   margin-bottom: 10px;
@@ -65,11 +61,11 @@ input {
   transition: border 0.3s ease-in-out;
 }
 
-input:focus {
+.signUp-input:focus {
   border-color: #007bff;
 }
 
-button {
+.signUp-button {
   background: #007bff;
   color: #ffffff;
   padding: 12px 20px;
@@ -82,7 +78,7 @@ button {
   font-weight: bold;
 }
 
-button:hover {
+.signUp-button:hover {
   background: #0056b3;
 }
 

@@ -41,26 +41,28 @@ const Login = () => {
   }
 
   return (
-    <div className="login-container">
-      <div className="form-parent">
-        <form id="createUserForm">
-          <h3>Log in with your Email</h3>
-          <div className="input-group">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" placeholder="Enter email" required />
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" placeholder="Enter password" required />
-          </div>
-          <button type="submit">Login</button>
-          <p className="forgot-password">
-            <Link to="/forget">Forgot your password?</Link>
-          </p>
-          <p>
-            Don't have an account? <Link to="/signup">Sign up here</Link>
-          </p>
-        </form>
+    <div className="login-page">
+      <div className="login-container">
+        <div className="form-parent">
+          <form id="createUserForm">
+            <h3>Log in with your Email</h3>
+            <div className="input-group">
+              <label htmlFor="email">Email:</label>
+              <input type="email" id="email" placeholder="Enter email" required />
+            </div>
+            <div className="input-group">
+              <label htmlFor="password">Password:</label>
+              <input type="password" id="password" placeholder="Enter password" required />
+            </div>
+            <button type="submit">Login</button>
+            <p className="forgot-password">
+              <Link to="/forget">Forgot your password?</Link>
+            </p>
+            <p>
+              Don't have an account? <Link to="/signup">Sign up here</Link>
+            </p>
+          </form>
+        </div>
       </div>
     </div>
   );

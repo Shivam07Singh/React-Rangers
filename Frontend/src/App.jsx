@@ -14,6 +14,9 @@ import LibraryTemplate from "./bComponent/Library-template.jsx";
 import HotelBookingTemplate from "./bComponent/Hotel-template.jsx";
 import Landingpage from "./components/Landingpage.jsx";
 import "./App.css";
+import Navbar from "./bComponent/Navbar.jsx";
+import ContactPage from "./bComponent/Contact.jsx";
+import AboutPage from "./bComponent/About.jsx";
 
 export default function App() {
   return (
@@ -31,6 +34,9 @@ export default function App() {
           <Route path="/template3" element={<ConstructionTemplate />} />
           <Route path="/library-template" element={<LibraryTemplate />} />
           <Route path="/hotel-template" element={<HotelBookingTemplate />} />
+          <Route path="/navbar" element={<Navbar />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </div>
     </Router>
