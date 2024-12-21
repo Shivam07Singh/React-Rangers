@@ -5,7 +5,7 @@ const HeroSection = () => {
     <section className="hero">
       <div className="hero-content">
         <h1>Create a professional, free website in minutes</h1>
-        <p>Get leads, sell products, and grow your business online.</p>
+        <p style={{color: 'white'}}>Get leads, sell products, and grow your business online.</p>
         <button className="btn-primary">Try for Free</button>
       </div>
       {/* <div className="hero-image">

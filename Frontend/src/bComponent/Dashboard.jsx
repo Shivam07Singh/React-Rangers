@@ -68,7 +68,7 @@ const Dashboard = () => {
 const styles = {
   dashboard: {
     height: "100vh",
-    backgroundColor: "white",
+    // backgroundColor: "white",
     textAlign: "center",
     padding: "20px",
     fontFamily: "Arial, sans-serif",

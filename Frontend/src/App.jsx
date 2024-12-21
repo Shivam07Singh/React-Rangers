@@ -10,12 +10,21 @@ import ConstructionTemplate from "./bComponent/Template3.jsx"; {/* Fixed typo in
 import LibraryTemplate from "./bComponent/Library-template.jsx";
 import HotelBookingTemplate from "./bComponent/Hotel-template.jsx";
 import Landingpage from "./components/Landingpage.jsx";
+import Footer from "./components/Footer.jsx";
+import About from "./components/About.jsx";
+
+import Contact from "./components/Contact.jsx";
+import BlogPage from "./components/BlogPage.jsx";
 
 export default function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
+
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forget" element={<ForgetPassword />} />
