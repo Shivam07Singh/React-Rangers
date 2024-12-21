@@ -69,16 +69,38 @@ function Template1() {
     "https://zebronics.com/cdn/shop/collections/zeb-Wireless-Headphone-banner.jpg?v=1688118018&width=2600"
   );
   const [title, setTitle] = useState("BuyZone");
-  const [isEditMode, setIsEditMode] = useState(false);
 
-  const navigate = useNavigate();
+  const [editingHero, setEditingHero] = useState(false);
+  const [editingHeroState, setEditingHeroState] = useState({
+    title: title,
+    image: heroImage,
+  });
+
+  const handleUpdateHero = (e) => {
+    e.preventDefault();
+    setTitle(editingHeroState.title);
+    setHeroImage(editingHeroState.image);
+    setEditingHero(false);
+  };
 
   const handleAddToCart = (productId) => {
     alert(`Added product ${productId} to cart!`);
   };
 
-  const handleBackClick = () => {
-    navigate("/");
+  const [editingProduct, setEditingProduct] = useState(null);
+
+  const handleEditProduct = (product) => {
+    setEditingProduct(product);
+  };
+
+  const handleUpdateProduct = (e) => {
+    e.preventDefault();
+    setProducts((prevProducts) =>
+      prevProducts.map((prod) =>
+        prod.id === editingProduct.id ? editingProduct : prod
+      )
+    );
+    setEditingProduct(null);
   };
 
   return (
@@ -133,21 +155,11 @@ function Template1() {
 
       <main>
         <div className="hero" style={{ position: "relative" }}>
-          {isEditMode ? (
-            <input
-              type="text"
-              value={heroImage}
-              onChange={(e) => setHeroImage(e.target.value)}
-              style={{
-                width: "100%",
-                marginBottom: "10px",
-                padding: "5px",
-                fontSize: "1rem",
-              }}
-            />
-          ) : (
-            <img src={heroImage} alt="Hero Image" style={{ width: "100%", marginTop: "5px", height: "400px" }} />
-          )}
+          <img
+            src={heroImage}
+            alt="Hero Image"
+            style={{ width: "100%", marginTop: "5px", height: "400px" }}
+          />
           <h1
             style={{
               position: "absolute",
@@ -158,157 +170,224 @@ function Template1() {
               fontWeight: "bold",
               fontSize: "2.5rem",
             }}
-            contentEditable={isEditMode}
-            onInput={(e) => setTitle(e.target.innerText)}
           >
             {title}
           </h1>
-        </div>
-
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: "20px",
-          marginTop: "20px",
-          padding: "10px"
-        }}>
-          {products.map((product) => (
-            <div key={product.id} style={{
-              boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
+          <button
+            onClick={() => setEditingHero(!editingHero)}
+            style={{
+              position: "absolute",
+              bottom: "10px",
+              right: "10px",
+              backgroundColor: "#007bff",
+              color: "white",
               padding: "10px",
               borderRadius: "5px",
-              backgroundColor: "#fff",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              textAlign: "center"
-            }}>
-              {isEditMode ? (
-                <>
-                  <input
-                    type="text"
-                    value={product.name}
-                    onChange={(e) => {
-                      const updatedProducts = products.map((p) =>
-                        p.id === product.id ? { ...p, name: e.target.value } : p
-                      );
-                      setProducts(updatedProducts);
-                    }}
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Edit Hero
+          </button>
+
+          {editingHero && (
+            <form
+              onSubmit={handleUpdateHero}
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                backgroundColor: "rgba(0, 0, 0, 0.8)",
+                color: "white",
+                padding: "20px",
+                borderRadius: "10px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
+            >
+              <input
+                type="text"
+                placeholder="Update Title"
+                value={editingHeroState.title}
+                onChange={(e) =>
+                  setEditingHeroState({ ...editingHeroState, title: e.target.value })
+                }
+                style={{
+                  padding: "10px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+              <input
+                type="text"
+                placeholder="Update Hero Image URL"
+                value={editingHeroState.image}
+                onChange={(e) =>
+                  setEditingHeroState({ ...editingHeroState, image: e.target.value })
+                }
+                style={{
+                  padding: "10px",
+                  borderRadius: "5px",
+                  border: "1px solid #ccc",
+                }}
+              />
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: "#28a745",
+                  color: "white",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Save
+              </button>
+            </form>
+          )}
+        </div>
+
+        <section style={{ padding: "20px" }}>
+          <h2>Our Products</h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+            {products.map((product) => (
+              <div
+                key={product.id}
+                style={{
+                  border: "1px solid #ccc",
+                  borderRadius: "10px",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+                  maxWidth: "300px",
+                  textAlign: "center",
+                }}
+              >
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  style={{ width: "100%", height: "200px", objectFit: "cover" }}
+                />
+                <div style={{ padding: "10px" }}>
+                  <h3 style={{ margin: "10px 0" }}>{product.name}</h3>
+                  <p style={{ color: "#555", marginBottom: "10px" }}>${product.price}</p>
+                  <button
+                    onClick={() => handleAddToCart(product.id)}
                     style={{
-                      marginBottom: "10px",
-                      padding: "5px",
-                      width: "100%"
-                    }}
-                  />
-                  <input
-                    type="text"
-                    value={product.price}
-                    onChange={(e) => {
-                      const updatedProducts = products.map((p) =>
-                        p.id === product.id ? { ...p, price: e.target.value } : p
-                      );
-                      setProducts(updatedProducts);
-                    }}
-                    style={{
-                      marginBottom: "10px",
-                      padding: "5px",
-                      width: "100%"
-                    }}
-                  />
-                  <input
-                    type="text"
-                    value={product.image}
-                    onChange={(e) => {
-                      const updatedProducts = products.map((p) =>
-                        p.id === product.id ? { ...p, image: e.target.value } : p
-                      );
-                      setProducts(updatedProducts);
-                    }}
-                    style={{
-                      marginBottom: "10px",
-                      padding: "5px",
-                      width: "100%"
-                    }}
-                  />
-                </>
-              ) : (
-                <>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    style={{
-                      width: "100%",
-                      height: "250px",
-                      objectFit: "contain",
-                      borderRadius: "5px"
-                    }}
-                  />
-                  <h3>{product.name}</h3>
-                  <p>₹{product.price}</p>
-                  <div style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    width: "100%"
-                  }}>
-                    <button onClick={() => handleAddToCart(product.id)} style={{
                       backgroundColor: "#007bff",
                       color: "white",
-                      padding: "10px 20px",
+                      padding: "10px",
                       borderRadius: "5px",
                       border: "none",
-                      cursor: "pointer"
-                    }}>
-                      Add to Cart
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
+                      cursor: "pointer",
+                      width: "100%",
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                  <button
+                    onClick={() => handleEditProduct(product)}
+                    style={{
+                      backgroundColor: "#ffc107",
+                      color: "white",
+                      padding: "10px",
+                      borderRadius: "5px",
+                      border: "none",
+                      cursor: "pointer",
+                      width: "100%",
+                      marginTop: "10px",
+                    }}
+                  >
+                    Edit
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <div style={{
-          textAlign: "center",
-          marginTop: "20px"
-        }}>
-          
-        </div>
+        {editingProduct && (
+          <div
+            style={{
+              position: "fixed",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              backgroundColor: "white",
+              padding: "20px",
+              borderRadius: "10px",
+              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+              zIndex: "1000",
+            }}
+          >
+            <h3>Edit Product</h3>
+            <form onSubmit={handleUpdateProduct}>
+              <label>
+                Name:
+                <input
+                  type="text"
+                  value={editingProduct.name}
+                  onChange={(e) =>
+                    setEditingProduct({ ...editingProduct, name: e.target.value })
+                  }
+                  style={{ display: "block", margin: "10px 0", padding: "5px" }}
+                />
+              </label>
+              <label>
+                Price:
+                <input
+                  type="number"
+                  value={editingProduct.price}
+                  onChange={(e) =>
+                    setEditingProduct({ ...editingProduct, price: parseFloat(e.target.value) })
+                  }
+                  style={{ display: "block", margin: "10px 0", padding: "5px" }}
+                />
+              </label>
+              <label>
+                Image URL:
+                <input
+                  type="text"
+                  value={editingProduct.image}
+                  onChange={(e) =>
+                    setEditingProduct({ ...editingProduct, image: e.target.value })
+                  }
+                  style={{ display: "block", margin: "10px 0", padding: "5px" }}
+                />
+              </label>
+              <button
+                type="submit"
+                style={{
+                  backgroundColor: "#28a745",
+                  color: "white",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Save Changes
+              </button>
+              <button
+                onClick={() => setEditingProduct(null)}
+                style={{
+                  backgroundColor: "#dc3545",
+                  color: "white",
+                  padding: "10px",
+                  borderRadius: "5px",
+                  border: "none",
+                  cursor: "pointer",
+                  marginLeft: "10px",
+                }}
+              >
+                Cancel
+              </button>
+            </form>
+          </div>
+        )}
       </main>
-
-      <footer style={{
-        backgroundColor: "rgba(248, 249, 250, 0.7)",
-        padding: "10px 20px",
-        textAlign: "center",
-        marginTop: "20px"
-      }}>
-        <p style={{ color: "#555" }}>&copy; 2024 BuyZone. All rights reserved.</p>
-      </footer>
-
-      <div style={{
-        textAlign: "center",
-        marginTop: "20px"
-      }}>
-        <button onClick={handleBackClick} style={{
-          backgroundColor: "#f0f0f0",
-          color: "#007bff",
-          padding: "10px 20px",
-          borderRadius: "5px",
-          border: "1px solid #ccc"
-        }}>
-          Back to Dashboard
-        </button>
-        <button onClick={() => setIsEditMode(!isEditMode)} style={{
-            backgroundColor: "#28a745",
-            color: "white",
-            padding: "10px 20px",
-            borderRadius: "5px",
-            border: "none",
-            cursor: "pointer",
-            margin:"10px"
-          }}>
-            {isEditMode ? "Save Changes" : "Edit"}
-          </button>
-      </div>
     </div>
   );
 }
