@@ -1,5 +1,6 @@
-import "./SignUp.css";
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./signup.css";
 
 const SignUp = () => {
   useEffect(() => {
@@ -45,7 +46,7 @@ const SignUp = () => {
       }
 
       alert("User registered successfully!");
-      window.location.href = "login.html"; // Redirect to login page
+      window.location.href = "/login"; // Updated to use React Router path
     } catch (error) {
       console.error("Error during sign up:", error);
       alert(`Sign Up Error: ${error.message}`);
@@ -53,36 +54,38 @@ const SignUp = () => {
   }
 
   return (
-    <div className="signup_container">
-      <img id="Logo" src="assets/LOGO.jpg" alt="LOGO" />
-      <div className="formParent">
-        <img
-          id="Welcome"
-          src="assets/Black_And_White_Modern_Music_Logo-removebg-preview.png"
-          alt="Welcome"
-        />
+    <div className="signup-container">
+      <div className="form-parent">
+        
         <form id="createUserForm">
           <h3>Sign Up with your Information</h3>
-          <label htmlFor="name">Name:</label>
-          <input type="text" id="name" placeholder="Enter name" required />
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" placeholder="Enter email" required />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Enter password"
-            required
-          />
-          <label htmlFor="address">Address:</label>
-          <input type="text" id="address" placeholder="Enter address" />
-          <label htmlFor="phone">Phone:</label>
-          <input type="text" id="phone" placeholder="Enter phone number" />
-          <label htmlFor="gender">Gender:</label>
-          <input type="text" id="gender" placeholder="Enter gender" />
+          <div className="input-group">
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" placeholder="Enter name" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="email">Email</label>
+            <input type="email" id="email" placeholder="Enter email" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" required />
+          </div>
+          <div className="input-group">
+            <label htmlFor="address">Address</label>
+            <input type="text" id="address" placeholder="Enter address" />
+          </div>
+          <div className="input-group">
+            <label htmlFor="phone">Phone</label>
+            <input type="text" id="phone" placeholder="Enter phone number" />
+          </div>
+          <div className="input-group">
+            <label htmlFor="gender">Gender</label>
+            <input type="text" id="gender" placeholder="Enter gender" />
+          </div>
           <button type="submit">Sign Up</button>
           <p>
-            Already have an account? <a href="login.html">Log in here</a>
+            Already have an account? <Link to="/login">Log in here</Link>
           </p>
         </form>
       </div>
