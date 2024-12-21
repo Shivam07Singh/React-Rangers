@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 function Template2() {
   const navigate = useNavigate();
@@ -8,7 +7,7 @@ function Template2() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [title, setTitle] = useState("Travel the World");
   const [heroImage, setHeroImage] = useState(
-    "https://mapmygenome.in/cdn/shop/articles/How_to_Stay_Healthy_While_Traveling_-_Tips_and_Insights_for_a_Safe_Journey.webp?v=1718688910&width=3000"
+    "https://wallpapershome.com/images/pages/pic_h/12772.jpg"
   );
   const [items, setItems] = useState([
     { id: "1", content: "Home" },
@@ -45,16 +44,6 @@ function Template2() {
     },
   ]);
 
-  const handleOnDragEnd = (result) => {
-    const { destination, source } = result;
-    if (!destination) return;
-
-    const updatedItems = Array.from(items);
-    const [removed] = updatedItems.splice(source.index, 1);
-    updatedItems.splice(destination.index, 0, removed);
-    setItems(updatedItems);
-  };
-
   const handleBackClick = () => {
     navigate("/"); // Navigate back to the dashboard
   };
@@ -67,10 +56,17 @@ function Template2() {
 
   return (
     <div className="container">
+      {/* Navbar */}
       <header
         style={{
-          background: "linear-gradient(to right, black, blue)",
+
+          position: "absolute", // Overlap the hero image
+          top: 0,
+          left: 0,
+          width: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0)", // Transparent background
           padding: "10px 0",
+          zIndex: 10, // Place it above the hero image
         }}
       >
         <nav
@@ -78,9 +74,8 @@ function Template2() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            padding: "10px",
+            padding: "10px 20px",
             fontFamily: "sans-serif",
-            flexWrap: "wrap",
           }}
         >
           <h1 style={{ color: "white", margin: 0 }}>Travel Stories</h1>
@@ -90,7 +85,6 @@ function Template2() {
               display: "flex",
               margin: 0,
               padding: 0,
-              flexWrap: "wrap",
             }}
           >
             {items.map((item, index) => (
@@ -123,12 +117,14 @@ function Template2() {
         </nav>
       </header>
 
+      {/* Hero Section */}
       <main>
         <div
           className="hero"
           style={{
             position: "relative",
-            marginTop: "5px",
+            height: "100vh", // Full screen height
+            overflow: "hidden",
           }}
         >
           {isEditMode ? (
@@ -147,7 +143,11 @@ function Template2() {
             <img
               src={heroImage}
               alt="Hero Image"
-              style={{ width: "100%", objectFit: "cover" }}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
             />
           )}
 
@@ -170,6 +170,7 @@ function Template2() {
           </h1>
         </div>
 
+        {/* Stories Section */}
         <div
           className="story-container"
           style={{
@@ -252,6 +253,7 @@ function Template2() {
         </div>
       </main>
 
+      {/* Footer */}
       <footer
         style={{
           backgroundColor: "black",
@@ -264,6 +266,7 @@ function Template2() {
         <p>&copy; 2023 Travel Website</p>
       </footer>
 
+      {/* Buttons */}
       <button
         onClick={handleBackClick}
         style={{

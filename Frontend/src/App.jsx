@@ -1,14 +1,15 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-import Template2 from "./bComponent/Template2";
-import ConstructionTemplate from "./bComponent/Template3";
-
 import Login from "./sComponent/Login";
 import SignUp from "./sComponent/signup";
-import Template1 from "./bComponent/Template1";
 import ForgetPassword from "./sComponent/forgetPassword";
 import ResetPassword from "./sComponent/ResetPassword";
-import Landingpage from "./components/Landingpage";
+import Dashboard from "./bComponent/Dashboard.jsx";
+import Template1 from "./bComponent/Template1.jsx";
+import Template2 from "./bComponent/Template2.jsx";
+import ConstructionTemplate from "./bComponent/Template3.jsx"; {/* Fixed typo in file extension */ }
+import LibraryTemplate from "./bComponent/Library-template.jsx";
+import HotelBookingTemplate from "./bComponent/Hotel-template.jsx";
+import Landingpage from "./components/Landingpage.jsx";
 
 export default function App() {
   return (
@@ -19,13 +20,14 @@ export default function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forget" element={<ForgetPassword />} />
           <Route path="/admin/resetpassword" element={<ResetPassword />} />
-
           <Route path="/" element={<Landingpage />} />
-          <Route path="/Template1" element={<Template1 />} />
-          <Route path="/Template2" element={<Template2 />} />
-          <Route path="/Template3" element={<ConstructionTemplate />} />
-          {/* <Route path="/Template5" element={<LibraryTemplate />} />
-          <Route path="/Template6" element={<HotelBookingTemplate />} /> */}
+
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/template1" element={<Template1 />} />
+          <Route path="/template2" element={<Template2 />} />
+          <Route path="/template3" element={<ConstructionTemplate />} />
+          <Route path="/library-template" element={<LibraryTemplate />} />
+          <Route path="/hotel-template" element={<HotelBookingTemplate />} />
 
         </Routes>
       </div>
