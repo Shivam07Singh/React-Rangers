@@ -13,7 +13,7 @@ const Navbar = () => {
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
-          <h1 style={{ color: "black", margin: 0 }}>Travels</h1>
+          <h1 style={{ color: "black", margin: 0 }}></h1>
           <ul
             style={{
               display: "flex",

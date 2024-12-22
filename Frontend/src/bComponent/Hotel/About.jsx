@@ -1,11 +1,12 @@
+import React from 'react';
 import Navbar from './Navbar';
 
-const AboutH = () => {
+const AboutP = () => {
   return (
     <>
       <Navbar />
-      <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f9f9f9', padding: '0', marginTop: "80px" }}>
-
+      <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f0f8f5', padding: '0', marginTop: '80px' }}>
+        
         <header
           style={{
             color: 'grey',
@@ -13,8 +14,8 @@ const AboutH = () => {
             textAlign: 'center',
           }}
         >
-          <h1 style={{ margin: '0', fontSize: '36px' }}>Welcome to BuyZone</h1>
-          <p>Your trusted partner for all your tech needs.</p>
+          <h1 style={{ margin: '0', fontSize: '36px' }}>Welcome to Hotels</h1>
+          <p>Your trusted partner for all your hotel booking needs.</p>
         </header>
 
         <section
@@ -37,10 +38,9 @@ const AboutH = () => {
                 maxWidth: '600px',
               }}
             >
-              At BuyZone, we are passionate about providing our customers with the latest and greatest tech products.
-              From the newest gadgets to essential accessories, BuyZone offers a vast selection of high-quality products
-              to cater to your needs. Our team is dedicated to bringing you the best shopping experience by offering
-              competitive prices, excellent customer service, and fast shipping.
+              At Hotels, we are passionate about providing our customers with the best hotel booking experience. 
+              From luxury resorts to budget-friendly stays, Hotels offers a wide selection of accommodations to suit your needs. 
+              Our team is dedicated to bringing you the best travel experience by offering competitive prices, excellent customer service, and seamless booking.
             </p>
           </div>
           <div
@@ -52,8 +52,8 @@ const AboutH = () => {
             }}
           >
             <img
-              src="https://media.istockphoto.com/id/824351914/photo/distribution-warehouse-with-trucks-of-different-capacity.jpg?s=612x612&w=0&k=20&c=-aeDD6vTkJZ9c_Sg_xFPZKpn10HNPczG8AKYPRcWvFs="
-              alt="Our Warehouse"
+              src="https://thumbs.dreamstime.com/b/luxury-hotel-room-master-bedroom-creative-ai-design-background-instagram-facebook-wall-painting-photo-wallpaper-backgrounds-325040660.jpg"
+              alt="Luxury Hotel Room"
               style={{
                 width: '100%',
                 maxWidth: '500px',
@@ -84,9 +84,8 @@ const AboutH = () => {
                 maxWidth: '600px',
               }}
             >
-              Our mission is simple: to offer top-notch, cutting-edge products at competitive prices, while providing
-              exceptional customer service and fast, reliable shipping. We aim to be your go-to destination for all your
-              tech needs.
+              Our mission is simple: to offer top-notch hotel booking services at competitive prices, while providing exceptional customer service and fast, reliable booking. 
+              We aim to be your go-to destination for all your accommodation needs.
             </p>
           </div>
           <div
@@ -98,8 +97,8 @@ const AboutH = () => {
             }}
           >
             <img
-              src="https://lgresources.com/hs-fs/hubfs/warehouse-workers-1.webp?width=1772&height=1183&name=warehouse-workers-1.webp"
-              alt="Tech Products"
+              src="https://media.istockphoto.com/id/1068158558/photo/people-at-a-hotel-enjoying-their-vacation-checking-in-filling-a-form.jpg?s=612x612&w=0&k=20&c=I7dESXpN5Y7Hmg6HBw-4cNUc34GDgqy7v885zBCC0yM="
+              alt="Hotel Check-In"
               style={{
                 width: '100%',
                 maxWidth: '500px',
@@ -117,7 +116,7 @@ const AboutH = () => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: '40px 20px',
-            backgroundColor: '#f9f9f9',
+            backgroundColor: '#f0f8f5',
           }}
         >
           <div style={{ flex: '1 1 40%', padding: '20px', textAlign: 'left' }}>
@@ -131,10 +130,9 @@ const AboutH = () => {
                 maxWidth: '600px',
               }}
             >
-              We ensure that all our products meet the highest quality standards, providing you with reliable and
-              long-lasting tech. Our commitment to excellent customer service means that our team is always available to
-              assist you with any questions or concerns, ensuring fast and friendly support. We are also dedicated to
-              staying on the cutting edge of technology, offering the newest and most innovative products available.
+              We ensure that all our accommodations meet the highest quality standards, providing you with reliable and comfortable stays. 
+              Our commitment to excellent customer service means that our team is always available to assist you with any questions or concerns, ensuring fast and friendly support. 
+              We are also dedicated to staying on the cutting edge of hospitality, offering the newest and most innovative services available.
             </p>
           </div>
           <div
@@ -146,8 +144,8 @@ const AboutH = () => {
             }}
           >
             <img
-              src="https://st2.depositphotos.com/1071909/8604/i/450/depositphotos_86049366-stock-photo-increase-rating-evaluation-and-classification.jpg"
-              alt="Innovation"
+              src="https://img.freepik.com/premium-photo/two-business-people-check-hotel-reception_58466-8679.jpg"
+              alt="Hotel Reception"
               style={{
                 width: '100%',
                 maxWidth: '500px',
@@ -166,11 +164,11 @@ const AboutH = () => {
             padding: '20px',
           }}
         >
-          <p>&copy; 2024 BuyZone. All rights reserved.</p>
+          <p>&copy; 2024 Hotels. All rights reserved.</p>
         </footer>
       </div>
     </>
   );
 };
 
-export default AboutH;
+export default AboutP;
