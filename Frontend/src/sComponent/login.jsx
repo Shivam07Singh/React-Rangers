@@ -1,8 +1,9 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
+  let navigate = useNavigate()
   useEffect(() => {
     document
       .getElementById("createUserForm")
@@ -32,7 +33,11 @@ const Login = () => {
         // Store the token in localStorage or cookies
         localStorage.setItem("token", data.token);
         alert("Login successful");
-        window.location.href = "index.html";
+
+        
+        navigate("/dashboard")
+
+
       } else {
         alert(data.msg || "Error logging in");
       }

@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import Navbarp from "./Navbar";
+import { useNavigate } from "react-router-dom";
 
 function Products() {
+
+  const navigate = useNavigate();
+
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -106,7 +110,6 @@ function Products() {
 
 
   const handleData = async () => {
-    console.log(editingHeroState, products)
 
     try {
       // Retrieve the token from localStorage
@@ -114,7 +117,8 @@ function Products() {
 
       // Ensure the token exists before making the request
       if (!token) {
-        alert("Token not found. Please log in again.");
+        alert("No token found. Redirecting to login...");
+        navigate("/login");
         return;
       }
 
@@ -128,12 +132,25 @@ function Products() {
         body: JSON.stringify({ editingHeroState, products }),
       });
 
-      if (response.ok) {
-        alert("Data successfully sent to the database!");
+      if (!response.ok) {
+        const errorData = await response.json();
+
+        alert("Session expired. Redirecting to login...", errorData);
+        navigate("/login");
+
       } else {
-        const data = await response.json();
-        alert(data.msg || "Failed to send data to the database");
+        // Handle successful response
+        const responseData = await response.json();
+        alert("Data published successfully!");
+        console.log(responseData);
       }
+
+      // if (response.ok) {
+      //   alert("Data successfully sent to the database!");
+      // } else {
+      //   const data = await response.json();
+      //   alert(data.msg || "Failed to send data to the database");
+      // }
     } catch (error) {
       console.error("Error sending data:", error);
       alert("An error occurred while sending data.");
@@ -167,18 +184,8 @@ function Products() {
               {title}
             </h1>
 
-            <button onClick={handleData} style={{
-              position: "absolute",
-              top: "10px",
-              right: "10px",
-              backgroundColor: "green",
-              color: "white",
-              margin: "20px",
-              padding: "10px",
-              borderRadius: "5px",
-              border: "none",
-              cursor: "pointer",
-            }}>Publish</button>
+
+            <button onClick={handleData} style={{ position: "absolute", top: "10px", right: "10px", backgroundColor: "green", color: "white", margin: "20px", padding: "10px", borderRadius: "5px", border: "none", cursor: "pointer", }}>Publish</button>
 
             <button
               onClick={() => setEditingHero(!editingHero)}

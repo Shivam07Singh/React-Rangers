@@ -4,17 +4,18 @@ const AboutT = () => {
   return (
     <>
       <Navbar />
-      <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f9f9f9', padding: '0', marginTop: "80px" }}>
+      <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#fff', padding: '0', marginTop: '80px' }}>
 
         <header
           style={{
-            color: 'grey',
+            color: '#333',
             padding: '20px',
             textAlign: 'center',
+            backgroundColor: '#2c3e50',
           }}
         >
-          <h1 style={{ margin: '0', fontSize: '36px' }}>Welcome to BuyZone</h1>
-          <p>Your trusted partner for all your tech needs.</p>
+          <h1 style={{ margin: '0', fontSize: '36px',color:"white" }}>Welcome to Travel Stories</h1>
+          <p>Your gateway to unforgettable travel experiences.</p>
         </header>
 
         <section
@@ -24,36 +25,20 @@ const AboutT = () => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: '40px 20px',
+            textAlign: 'center',
           }}
         >
-          <div style={{ flex: '1 1 40%', padding: '20px', textAlign: 'left' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Who We Are</h2>
-            <p
-              style={{
-                fontSize: '1.2rem',
-                color: '#555',
-                marginBottom: '20px',
-                lineHeight: '1.8',
-                maxWidth: '600px',
-              }}
-            >
-              At BuyZone, we are passionate about providing our customers with the latest and greatest tech products.
-              From the newest gadgets to essential accessories, BuyZone offers a vast selection of high-quality products
-              to cater to your needs. Our team is dedicated to bringing you the best shopping experience by offering
-              competitive prices, excellent customer service, and fast shipping.
-            </p>
-          </div>
           <div
             style={{
-              flex: '1 1 40%',
+              flex: '1',
               padding: '20px',
               display: 'flex',
               justifyContent: 'center',
             }}
           >
             <img
-              src="https://media.istockphoto.com/id/824351914/photo/distribution-warehouse-with-trucks-of-different-capacity.jpg?s=612x612&w=0&k=20&c=-aeDD6vTkJZ9c_Sg_xFPZKpn10HNPczG8AKYPRcWvFs="
-              alt="Our Warehouse"
+              src="https://img.freepik.com/free-photo/couple-family-traveling-together_1150-7772.jpg"
+              alt="Our Team"
               style={{
                 width: '100%',
                 maxWidth: '500px',
@@ -61,6 +46,24 @@ const AboutT = () => {
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
               }}
             />
+          </div>
+          <div style={{ flex: '1', padding: '20px', maxWidth: '800px', textAlign: 'left' }}>
+            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Who We Are</h2>
+            <p
+              style={{
+                fontSize: '1.2rem',
+                color: '#555',
+                marginBottom: '20px',
+                lineHeight: '1.8',
+                columnCount: 2,
+                columnGap: '40px',
+              }}
+            >
+              At Travel Stories, we are passionate about providing our customers with the most memorable travel experiences.
+              From exotic destinations to thrilling adventures, Travel Stories offers a wide range of travel packages to
+              cater to your wanderlust. Our team is dedicated to bringing you the best travel experience by offering
+              competitive prices, excellent customer service, and tailored travel plans.
+            </p>
           </div>
         </section>
 
@@ -71,35 +74,21 @@ const AboutT = () => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: '40px 20px',
+            backgroundColor: '#f0f0f0',
+            textAlign: 'center',
           }}
         >
-          <div style={{ flex: '1 1 40%', padding: '20px', textAlign: 'left' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Our Mission</h2>
-            <p
-              style={{
-                fontSize: '1.2rem',
-                color: '#555',
-                marginBottom: '20px',
-                lineHeight: '1.8',
-                maxWidth: '600px',
-              }}
-            >
-              Our mission is simple: to offer top-notch, cutting-edge products at competitive prices, while providing
-              exceptional customer service and fast, reliable shipping. We aim to be your go-to destination for all your
-              tech needs.
-            </p>
-          </div>
           <div
             style={{
-              flex: '1 1 40%',
+              flex: '1',
               padding: '20px',
               display: 'flex',
               justifyContent: 'center',
             }}
           >
             <img
-              src="https://lgresources.com/hs-fs/hubfs/warehouse-workers-1.webp?width=1772&height=1183&name=warehouse-workers-1.webp"
-              alt="Tech Products"
+              src="https://thumbs.dreamstime.com/b/paris-france-postcard-collage-collage-includes-major-landmarks-like-eiffel-tower-notre-dame-trocadero-champs-elysees-34048124.jpg"
+              alt="Travel Mission"
               style={{
                 width: '100%',
                 maxWidth: '500px',
@@ -107,6 +96,23 @@ const AboutT = () => {
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
               }}
             />
+          </div>
+          <div style={{ flex: '1', padding: '20px', maxWidth: '800px', textAlign: 'left' }}>
+            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Our Mission</h2>
+            <p
+              style={{
+                fontSize: '1.2rem',
+                color: '#555',
+                marginBottom: '20px',
+                lineHeight: '1.8',
+                columnCount: 2,
+                columnGap: '40px',
+              }}
+            >
+              Our mission is simple: to inspire and enable our customers to explore the world, one journey at a time.
+              We aim to be your go-to destination for all your travel needs, providing exceptional service and
+              unforgettable experiences.
+            </p>
           </div>
         </section>
 
@@ -117,37 +123,20 @@ const AboutT = () => {
             alignItems: 'center',
             justifyContent: 'center',
             padding: '40px 20px',
-            backgroundColor: '#f9f9f9',
+            textAlign: 'center',
           }}
         >
-          <div style={{ flex: '1 1 40%', padding: '20px', textAlign: 'left' }}>
-            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Our Values</h2>
-            <p
-              style={{
-                fontSize: '1.2rem',
-                color: '#555',
-                marginBottom: '20px',
-                lineHeight: '1.8',
-                maxWidth: '600px',
-              }}
-            >
-              We ensure that all our products meet the highest quality standards, providing you with reliable and
-              long-lasting tech. Our commitment to excellent customer service means that our team is always available to
-              assist you with any questions or concerns, ensuring fast and friendly support. We are also dedicated to
-              staying on the cutting edge of technology, offering the newest and most innovative products available.
-            </p>
-          </div>
           <div
             style={{
-              flex: '1 1 40%',
+              flex: '1',
               padding: '20px',
               display: 'flex',
               justifyContent: 'center',
             }}
           >
             <img
-              src="https://st2.depositphotos.com/1071909/8604/i/450/depositphotos_86049366-stock-photo-increase-rating-evaluation-and-classification.jpg"
-              alt="Innovation"
+              src="https://media.istockphoto.com/id/841490790/photo/friends-having-reached-the-top-of-a-mountain.jpg?s=170667a&w=0&k=20&c=J8BD9ecHhh3BFcPAuF9HjTJ02nwFVriKZ1QsfkMBNj0="
+              alt="Travel Values"
               style={{
                 width: '100%',
                 maxWidth: '500px',
@@ -156,17 +145,36 @@ const AboutT = () => {
               }}
             />
           </div>
+          <div style={{ flex: '1', padding: '20px', maxWidth: '800px', textAlign: 'left' }}>
+            <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Our Values</h2>
+            <p
+              style={{
+                fontSize: '1.2rem',
+                color: '#555',
+                marginBottom: '20px',
+                lineHeight: '1.8',
+                columnCount: 2,
+                columnGap: '40px',
+              }}
+            >
+              We ensure that all our travel packages meet the highest standards, providing you with reliable and
+              enriching travel experiences. Our commitment to excellent customer service means that our team is always
+              available to assist you with any questions or concerns, ensuring a seamless and enjoyable journey. We are
+              also dedicated to sustainability and responsible travel, promoting eco-friendly practices and supporting
+              local communities.
+            </p>
+          </div>
         </section>
 
         <footer
           style={{
-            backgroundColor: '#333',
+            backgroundColor: '#2c3e50',
             color: '#fff',
             textAlign: 'center',
             padding: '20px',
           }}
         >
-          <p>&copy; 2024 BuyZone. All rights reserved.</p>
+          <p>&copy; 2024 Travel Stories. All rights reserved.</p>
         </footer>
       </div>
     </>

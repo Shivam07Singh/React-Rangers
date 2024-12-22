@@ -204,6 +204,7 @@ function Hotels() {
               <p style={{ fontSize: "1.2rem", margin: "10px 0 20px", color: "#fff" }}>
                 {header.subtitle}
               </p>
+
               <button
                 onClick={handleEditHeader}
                 style={{

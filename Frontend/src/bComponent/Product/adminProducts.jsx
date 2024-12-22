@@ -108,6 +108,7 @@ function AdminProducts() {
                         >
                             {title}
                         </h1>
+                        <button onClick={handleUpdate} style={{ position: "absolute", top: "10px", right: "10px", backgroundColor: "green", color: "white", margin: "20px", padding: "10px", borderRadius: "5px", border: "none", cursor: "pointer", }}>Publish Update</button>
 
                         <button
                             onClick={() => setEditingHero(!editingHero)}
@@ -126,7 +127,6 @@ function AdminProducts() {
                         >
                             Edit Hero
                         </button>
-                        <button onClick={handleUpdate}>Update Product</button>
 
                         {editingHero && (
                             <form

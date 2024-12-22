@@ -8,6 +8,7 @@ import Travels from "./Travel/Travels.jsx";
 import { useEffect, useState } from "react";
 import axios from "axios"
 import AdminProducts from "./Product/adminProducts";
+import Header from "../components/Header.jsx";
 const templates = [
     {
         id: 1,
@@ -66,6 +67,7 @@ const Dashboard = () => {
     return (
 
         <div style={styles.dashboard}>
+            <Header />
             <div>
                 <h1 style={styles.heading}>Created my websites</h1>
                 <div style={styles.templateGrid}>

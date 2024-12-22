@@ -1,22 +1,22 @@
 import React from 'react';
 import Navbar from './Navbar';
 
-const ContactT = () => {
+const ContactP = () => {
   return (
     <>
       <Navbar />
-      <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f2f2f2', margin: '0', padding: '0', marginTop: "80px" }}>
+      <div style={{ fontFamily: 'Arial, sans-serif', backgroundColor: '#f7f7f7', margin: '0', padding: '0', marginTop: '80px' }}>
 
         <header
           style={{
-            backgroundColor: '#283593',
+            backgroundColor: '#2c3e50',
             color: '#fff',
             padding: '20px 0',
             textAlign: 'center',
           }}
         >
           <h1 style={{ margin: '0', fontSize: '36px', letterSpacing: '1px' }}>Contact Us</h1>
-          <p style={{ fontSize: '18px', maxWidth: '600px', margin: '0 auto', color: "grey" }}>
+          <p style={{ fontSize: '18px', maxWidth: '600px', margin: '0 auto', color: '#bdc3c7' }}>
             We're here to help and answer any question you might have. We look forward to hearing from you!
           </p>
         </header>
@@ -29,13 +29,13 @@ const ContactT = () => {
             padding: '40px 20px',
           }}
         >
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#283593', letterSpacing: '1px' }}>Get in Touch</h2>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '20px', color: '#2c3e50', letterSpacing: '1px' }}>Get in Touch</h2>
           <p
             style={{
               maxWidth: '800px',
               textAlign: 'center',
               fontSize: '1.2rem',
-              color: '#555',
+              color: '#7f8c8d',
               marginBottom: '40px',
               lineHeight: '1.6',
             }}
@@ -63,10 +63,11 @@ const ContactT = () => {
                 borderRadius: '10px',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                 textAlign: 'center',
+                margin: '10px',
               }}
             >
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#283593', letterSpacing: '0.5px' }}>Email Us</h3>
-              <p style={{ color: '#555', fontSize: '1rem', lineHeight: '1.5' }}>support@buyzone.com</p>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#2c3e50', letterSpacing: '0.5px' }}>Visit Us</h3>
+              <p style={{ color: '#7f8c8d', fontSize: '1rem', lineHeight: '1.5' }}>4671 Sugar Camp Road, Owatonna, Minnesota, 55060</p>
             </div>
 
             <div
@@ -77,10 +78,26 @@ const ContactT = () => {
                 borderRadius: '10px',
                 boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                 textAlign: 'center',
+                margin: '10px',
               }}
             >
-              <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#283593', letterSpacing: '0.5px' }}>Call Us</h3>
-              <p style={{ color: '#555', fontSize: '1rem', lineHeight: '1.5' }}>+1 (800) 123-4567</p>
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#2c3e50', letterSpacing: '0.5px' }}>Call Us</h3>
+              <p style={{ color: '#7f8c8d', fontSize: '1rem', lineHeight: '1.5' }}>507-475-60945-6094</p>
+            </div>
+
+            <div
+              style={{
+                flex: '1 1 300px',
+                backgroundColor: '#fff',
+                padding: '20px',
+                borderRadius: '10px',
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                textAlign: 'center',
+                margin: '10px',
+              }}
+            >
+              <h3 style={{ fontSize: '1.5rem', marginBottom: '10px', color: '#2c3e50', letterSpacing: '0.5px' }}>Email Us</h3>
+              <p style={{ color: '#7f8c8d', fontSize: '1rem', lineHeight: '1.5' }}>wrub7d7810e@temporary-mail.net</p>
             </div>
           </div>
 
@@ -94,9 +111,9 @@ const ContactT = () => {
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
             }}
           >
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', textAlign: 'center', color: '#283593', letterSpacing: '0.5px' }}>Contact Form</h3>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '20px', textAlign: 'center', color: '#2c3e50', letterSpacing: '0.5px' }}>Contact Form</h3>
             <div style={{ marginBottom: '20px' }}>
-              <label htmlFor="name" style={{ display: 'block', marginBottom: '5px', color: '#283593', fontSize: '1rem', fontWeight: 'bold' }}>Name</label>
+              <label htmlFor="name" style={{ display: 'block', marginBottom: '5px', color: '#2c3e50', fontSize: '1rem', fontWeight: 'bold' }}>Name</label>
               <input
                 type="text"
                 id="name"
@@ -112,7 +129,7 @@ const ContactT = () => {
               />
             </div>
             <div style={{ marginBottom: '20px' }}>
-              <label htmlFor="email" style={{ display: 'block', marginBottom: '5px', color: '#283593', fontSize: '1rem', fontWeight: 'bold' }}>Email</label>
+              <label htmlFor="email" style={{ display: 'block', marginBottom: '5px', color: '#2c3e50', fontSize: '1rem', fontWeight: 'bold' }}>Email</label>
               <input
                 type="email"
                 id="email"
@@ -128,7 +145,7 @@ const ContactT = () => {
               />
             </div>
             <div style={{ marginBottom: '20px' }}>
-              <label htmlFor="message" style={{ display: 'block', marginBottom: '5px', color: '#283593', fontSize: '1rem', fontWeight: 'bold' }}>Message</label>
+              <label htmlFor="message" style={{ display: 'block', marginBottom: '5px', color: '#2c3e50', fontSize: '1rem', fontWeight: 'bold' }}>Message</label>
               <textarea
                 id="message"
                 name="message"
@@ -146,7 +163,7 @@ const ContactT = () => {
             <button
               type="submit"
               style={{
-                backgroundColor: '#ff5722',
+                backgroundColor: '#2c3e50',
                 color: '#fff',
                 padding: '10px 20px',
                 borderRadius: '5px',
@@ -165,18 +182,18 @@ const ContactT = () => {
 
         <footer
           style={{
-            backgroundColor: '#283593',
+            backgroundColor: '#2c3e50',
             color: '#fff',
             textAlign: 'center',
             padding: '20px',
             marginTop: '40px',
           }}
         >
-          <p>&copy; 2024 BuyZone. All rights reserved.</p>
+          <p>&copy; 2024 Travel Stories. All rights reserved.</p>
         </footer>
       </div>
     </>
   );
 };
 
-export default ContactT;
+export default ContactP;
