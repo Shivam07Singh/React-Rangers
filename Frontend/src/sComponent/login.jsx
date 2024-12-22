@@ -7,6 +7,9 @@ const Login = () => {
     document
       .getElementById("createUserForm")
       .addEventListener("submit", login);
+    document
+      .getElementById("createUserForm")
+      .addEventListener("submit", login);
   }, []);
 
   async function login(event) {
@@ -66,5 +69,6 @@ const Login = () => {
     </div>
   );
 };
+
 
 export default Login;

@@ -21,6 +21,48 @@ function Products() {
       price: 299,
       image: "https://www.titan.co.in/dw/image/v2/BKDD_PRD/on/demandware.static/-/Sites-titan-master-catalog/default/dw66fe4c98/images/Titan/Catalog/90188AP06_1.jpg?sw=800&sh=800",
     },
+    {
+      id: 4,
+      name: "Fitness Tracker",
+      price: 149,
+      image: "https://www.garmin.com.sg/m/sg/g/products/intosports/vivosmart-5.jpg",
+    },
+    {
+      id: 5,
+      name: "Portable Charger",
+      price: 49,
+      image: "https://m.media-amazon.com/images/I/614OfiBkyZL.jpg",
+    },
+    {
+      id: 6,
+      name: "Power Bank",
+      price: 39,
+      image: "https://images.philips.com/is/image/philipsconsumer/506144bc684c46e3a62fb0ce00a6d411?$pnglarge$&wid=960",
+    },
+    {
+      id: 7,
+      name: "Headphones",
+      price: 249,
+      image: "https://m.media-amazon.com/images/I/51EXj4BRQaL.jpg",
+    },
+    {
+      id: 8,
+      name: "4K Smart TV",
+      price: 599,
+      image: "https://www.lg.com/content/dam/channel/wcms/in/images/tvs/43ut80406la_atr_eail_c/gallery/uhd-43ut80-gallery-01.jpg/_jcr_content/renditions/thum-1600x1062.jpeg",
+    },
+    {
+      id: 9,
+      name: "Digital Camera",
+      price: 399,
+      image: "https://media.istockphoto.com/id/185278433/photo/black-digital-slr-camera-in-a-white-background.jpg?s=612x612&w=0&k=20&c=OOCbhvOF0W-eVhhrm-TxbgLfbKhFfs4Lprjd7hiQBNU=",
+    },
+    {
+      id: 10,
+      name: "Drone",
+      price: 799,
+      image: "https://m.media-amazon.com/images/I/61OgU7rf79L.jpg",
+    },
 
   ]);
 
@@ -125,8 +167,19 @@ function Products() {
               {title}
             </h1>
 
+            <button onClick={handleData} style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              backgroundColor: "green",
+              color: "white",
+              margin: "20px",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "none",
+              cursor: "pointer",
+            }}>Publish</button>
 
-            <button onClick={handleData}>Send data to database</button>
             <button
               onClick={() => setEditingHero(!editingHero)}
               style={{
@@ -144,6 +197,7 @@ function Products() {
             >
               Edit Hero
             </button>
+
 
             {editingHero && (
               <form
