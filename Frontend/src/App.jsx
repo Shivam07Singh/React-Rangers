@@ -25,6 +25,7 @@ import ContactH from "./bComponent/Hotel/Contact.jsx";
 import BlogPage from "./components/BlogPage.jsx";
 import Contact from "./components/Contact.jsx";
 import About from "./components/About.jsx";
+import AdminProducts from "./bComponent/Product/adminProducts.jsx";
 
 
 export default function App() {
@@ -66,6 +67,7 @@ export default function App() {
 
 
 
+          <Route path="/adminProduct" element={<AdminProducts />} />
 
         </Routes>
       </div>

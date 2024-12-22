@@ -6,6 +6,7 @@ import { authMiddleware } from "./middlewares/authMiddleware.js"
 import morgan from "morgan";
 import compression from "compression";
 import cors from "cors";
+import { websiteRoutes } from "./routes/websiteRoutes.js";
 
 
 const app = express();
@@ -18,7 +19,7 @@ app.use(morgan("common"));
 app.use(compression());
 app.use(express.json());
 app.use("/admin", adminRouter);
-
+app.use("/website", websiteRoutes)
 
 
 app.use(authMiddleware)

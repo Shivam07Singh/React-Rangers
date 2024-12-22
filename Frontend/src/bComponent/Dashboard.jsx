@@ -5,7 +5,9 @@ import Constructions from "./Construction/Constructions.jsx";
 import Hotels from "./Hotel/Hotels.jsx";
 import Libraries from "./Library/Libraries.jsx";
 import Travels from "./Travel/Travels.jsx";
-
+import { useEffect, useState } from "react";
+import axios from "axios"
+import AdminProducts from "./Product/adminProducts";
 const templates = [
     {
         id: 1,
@@ -40,8 +42,52 @@ const templates = [
 ];
 
 const Dashboard = () => {
+
+    const [templates1, setTemplates1] = useState([]);
+
+    useEffect(() => {
+        // Fetch templates from the backend with token
+        const token = localStorage.getItem("token");
+
+        axios.get('http://localhost:2024/website/product', {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
+        })
+            .then(response => {
+                setTemplates1(response.data.websites);
+                console.log(response.data.websites)
+            })
+            .catch(error => {
+                console.error("Error fetching templates:", error);
+            });
+    }, []);
+
     return (
+
         <div style={styles.dashboard}>
+            <div>
+                <h1 style={styles.heading}>Created my websites</h1>
+                <div style={styles.templateGrid}>
+                    {templates1.map((template) => (
+                        <Link
+                            key={template.name}
+                            to={`/adminProduct`} // Ensure the path matches exactly as in the Routes definition
+                            state={{ template }} // Passing data using state
+                        >
+                            <div style={styles.templateCard}>
+                                <h1>{template.name}</h1>
+                                <img src={template.url} alt={template.name} style={styles.image1} />
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+            </div>
+
+
+
+
+
             <h1 style={styles.heading}>Website Template</h1>
             <div style={styles.templateGrid}>
                 {templates.map((template) => (
@@ -60,6 +106,7 @@ const Dashboard = () => {
                 <Route path="/libraries" element={<Libraries />} />
                 <Route path="/constructions" element={<Constructions />} />
                 <Route path="/travels" element={<Travels />} />
+                <Route path="/adminProduct" element={<AdminProducts />} />
 
             </Routes>
 
@@ -72,7 +119,6 @@ const Dashboard = () => {
 
 const styles = {
     dashboard: {
-        height: "100vh",
         textAlign: "center",
         padding: "20px",
         fontFamily: "Arial, sans-serif",
@@ -99,11 +145,15 @@ const styles = {
         cursor: "pointer",
         textAlign: "center",
         transition: "transform 0.3s ease",
-        backgroundColor: "green",
+        backgroundColor: "gray",
     },
     image: {
         width: "100%",
         height: "auto",
+    },
+    image1: {
+        width: "100%",
+        height: "200px",
     },
     templateName: {
         padding: "10px",
