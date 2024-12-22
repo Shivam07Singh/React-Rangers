@@ -1,43 +1,45 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
   useEffect(() => {
-    document.getElementById("createUserForm").addEventListener("submit", login);
+    document
+      .getElementById("createUserForm")
+      .addEventListener("submit", login);
+    document
+      .getElementById("createUserForm")
+      .addEventListener("submit", login);
   }, []);
 
-  function login(event) {
+  async function login(event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const API_KEY = "AIzaSyCiO6ZwN79HD20uJSVEZevF8UOhtWOTa7Y";
 
     const requestOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        returnSecureToken: true,
-      }),
+      body: JSON.stringify({ email, password }),
     };
 
-    fetch(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`,
-      requestOptions
-    )
-      .then((resp) => resp.json())
-      .then((res) => {
-        if (res.error) {
-          alert("User not registered, Sign up first");
-        } else {
-          window.location.href = "/";
-        }
-      })
-      .catch((err) => console.error("Error:", err));
+    try {
+      const response = await fetch("http://localhost:2024/admin/login", requestOptions);
+      const data = await response.json();
+      if (response.ok) {
+        // Store the token in localStorage or cookies
+        localStorage.setItem("token", data.token);
+        alert("Login successful");
+        window.location.href = "index.html";
+      } else {
+        alert(data.msg || "Error logging in");
+      }
+    } catch (err) {
+      console.error("Error:", err);
+      alert("An error occurred. Please try again later.");
+    }
   }
 
   return (
@@ -67,5 +69,6 @@ const Login = () => {
     </div>
   );
 };
+
 
 export default Login;

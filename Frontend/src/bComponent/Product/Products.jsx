@@ -63,6 +63,7 @@ function Products() {
       price: 799,
       image: "https://m.media-amazon.com/images/I/61OgU7rf79L.jpg",
     },
+
   ]);
 
   const [heroImage, setHeroImage] = useState(
@@ -103,6 +104,43 @@ function Products() {
     setEditingProduct(null);
   };
 
+
+  const handleData = async () => {
+    console.log(editingHeroState, products)
+
+    try {
+      // Retrieve the token from localStorage
+      const token = localStorage.getItem("token");
+
+      // Ensure the token exists before making the request
+      if (!token) {
+        alert("Token not found. Please log in again.");
+        return;
+      }
+
+      // Send the request with the Authorization header
+      const response = await fetch("http://localhost:2024/website/product", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`, // Include the token in the Authorization header
+        },
+        body: JSON.stringify({ editingHeroState, products }),
+      });
+
+      if (response.ok) {
+        alert("Data successfully sent to the database!");
+      } else {
+        const data = await response.json();
+        alert(data.msg || "Failed to send data to the database");
+      }
+    } catch (error) {
+      console.error("Error sending data:", error);
+      alert("An error occurred while sending data.");
+    }
+  };
+
+
   return (
     <>
       <Navbarp />
@@ -128,6 +166,20 @@ function Products() {
             >
               {title}
             </h1>
+
+            <button onClick={handleData} style={{
+              position: "absolute",
+              top: "10px",
+              right: "10px",
+              backgroundColor: "green",
+              color: "white",
+              margin: "20px",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "none",
+              cursor: "pointer",
+            }}>Publish</button>
+
             <button
               onClick={() => setEditingHero(!editingHero)}
               style={{
@@ -145,6 +197,7 @@ function Products() {
             >
               Edit Hero
             </button>
+
 
             {editingHero && (
               <form
