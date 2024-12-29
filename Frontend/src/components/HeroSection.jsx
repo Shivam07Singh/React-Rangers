@@ -6,12 +6,11 @@ const HeroSection = () => {
     <section className="hero1">
       <div className="hero-content">
         <h1>Create a professional, free website in minutes</h1>
-        <p style={{ color: 'white' }}>Get leads, sell products, and grow your business online.</p>
-        <button className="btn-start" ><Link to="/dashboard" style={{ color: 'white' }}>Try Free</Link></button>
+        <p>Get leads, sell products, and grow your business online.</p>
+        <button className="btn-start">
+          <Link to="/dashboard" style={{ color: 'white', textDecoration: 'none' }}>Try Free</Link>
+        </button>
       </div>
-      {/* <div className="hero-image">
-        <img src="https://nandbox.com/wp-content/uploads/2024/01/Web-Application.webp" alt="Hero" />
-      </div> */}
     </section>
   );
 };

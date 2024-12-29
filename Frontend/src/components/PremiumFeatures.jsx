@@ -1,6 +1,4 @@
 import React from 'react';
-// import './PremiumFeatures.css';
-
 const PremiumFeatures = () => {
   return (
     <section className="premium-section">
@@ -21,4 +19,3 @@ const PremiumFeatures = () => {
 
 export default PremiumFeatures;
 
-//https://img.freepik.com/free-vector/software-developers-programming-computer-with-script_74855-6661.jpg?t=st=1734614040~exp=1734617640~hmac=33099a1ba9cdec2f7febdeed70bf6141c30939f0332f756c50701ef435c3ca1c&w=900

@@ -117,7 +117,6 @@ function Products() {
 
       // Ensure the token exists before making the request
       if (!token) {
-        alert("No token found. Redirecting to login...");
         navigate("/login");
         return;
       }
