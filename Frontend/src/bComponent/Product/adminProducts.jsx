@@ -11,6 +11,7 @@ function AdminProducts() {
     const [products, setProducts] = useState(templateData.products);
     const [heroImage, setHeroImage] = useState(templateData.url);
     const [title, setTitle] = useState(templateData.name);
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
     const [editingHero, setEditingHero] = useState(false);
     const [editingHeroState, setEditingHeroState] = useState({
@@ -60,7 +61,7 @@ function AdminProducts() {
             }
 
             // Construct the URL for updating the product
-            const response = await fetch(`http://localhost:2024/website/product/${id}`, {
+            const response = await fetch(`${apiBaseUrl}/website/product/${id}`, {
                 method: "PUT",  // Use PUT instead of POST
                 headers: {
                     "Content-Type": "application/json",

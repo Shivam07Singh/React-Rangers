@@ -43,6 +43,7 @@ const templates = [
 ];
 
 const Dashboard = () => {
+    const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
     const [templates1, setTemplates1] = useState([]);
 
@@ -50,7 +51,7 @@ const Dashboard = () => {
         // Fetch templates from the backend with token
         const token = localStorage.getItem("token");
 
-        axios.get('http://localhost:2024/website/product', {
+        axios.get(`${apiBaseUrl}/website/product`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }

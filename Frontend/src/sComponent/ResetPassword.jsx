@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 const ResetPassword = () => {
   const [token, setToken] = useState(""); // State to store the token
   const [newPassword, setNewPassword] = useState("");
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   // Extract token from the URL query string
   useEffect(() => {
@@ -15,7 +16,7 @@ const ResetPassword = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:2024/admin/resetpassword", {
+      const response = await fetch(`${apiBaseUrl}/admin/resetpassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

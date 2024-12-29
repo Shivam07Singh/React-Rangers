@@ -81,10 +81,11 @@ const forgetpassword = async (req, res) => {
       to: email,
       subject: "RESET Password Link",
       html: `
-            <p>CLICK on the link below to reset your password</p>
-            <a href = "http://localhost:5173/admin/resetpassword?token=${refreshToken}">RESET password</a>
-          `,
+        <p>CLICK on the link below to reset your password</p>
+        <a href="${process.env.CORS_ORIGIN}/admin/resetpassword?token=${refreshToken}">RESET password</a>
+      `,
     };
+
     await transporter.sendMail(mailOptions);
     res.status(200).json({ msg: "Mail sent successfully" });
   } catch (error) {

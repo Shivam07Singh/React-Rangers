@@ -3,6 +3,7 @@ import "./ForgetPassword.css";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -13,7 +14,7 @@ const ForgetPassword = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:2024/admin/forgetpassword", {
+      const response = await fetch(`${apiBaseUrl}/admin/forgetpassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

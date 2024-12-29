@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import "./SignUp.css";
 
 const SignUp = () => {
+
   useEffect(() => {
     const form = document.getElementById("signUpForm");
     if (form) {
       form.addEventListener("submit", signUp);
     }
   }, []);
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   async function signUp(event) {
     event.preventDefault();
@@ -31,7 +33,7 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:2024/admin/signup", {
+      const response = await fetch(`${apiBaseUrl}/admin/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
