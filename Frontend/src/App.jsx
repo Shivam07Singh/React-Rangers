@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // User Authentication Components
 import Login from "./sComponent/login.jsx"
+import SignUp from "./sComponent/SignUp.jsx";
 import ForgetPassword from "./sComponent/ForgetPassword";
 import ResetPassword from "./sComponent/ResetPassword";
 
@@ -31,7 +32,6 @@ import ContactC from "./bComponent/Construction/Contact.jsx";
 import AboutH from "./bComponent/Hotel/About.jsx";
 import ContactH from "./bComponent/Hotel/Contact.jsx";
 import AdminProducts from "./bComponent/Product/adminProducts.jsx";
-import SignUp from "./sComponent/SignUp.jsx";
 
 
 export default function App() {

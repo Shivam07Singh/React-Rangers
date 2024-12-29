@@ -1,43 +1,41 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import "./signUp.css";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./SignUp.css";
 
 const SignUp = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const form = document.getElementById("signUpForm");
-    if (form) {
-      form.addEventListener("submit", signUp);
-    }
-  }, []);
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
-  async function signUp(event) {
+  const handleSignUp = async (event) => {
     event.preventDefault();
+    setErrorMessage("");
 
-    const name = document.getElementById("signUpName").value.trim();
-    const email = document.getElementById("signUpEmail").value.trim();
-    const password = document.getElementById("signUpPassword").value.trim();
-    const address = document.getElementById("signUpAddress").value.trim();
-    const phone = document.getElementById("signUpPhone").value.trim();
-    const gender = document.getElementById("signUpGender").value.trim();
+    const name = event.target.signUpName.value.trim();
+    const email = event.target.signUpEmail.value.trim();
+    const password = event.target.signUpPassword.value.trim();
+    const address = event.target.signUpAddress.value.trim();
+    const phone = event.target.signUpPhone.value.trim();
+    const gender = event.target.signUpGender.value.trim();
 
     if (!name || !email || !password) {
-      alert("Please fill in all required fields.");
+      setErrorMessage("Please fill in all required fields.");
       return;
     }
 
     if (password.length < 6) {
-      alert("Password must be at least 6 characters long.");
+      setErrorMessage("Password must be at least 6 characters long.");
       return;
     }
+
+    setIsSubmitting(true);
 
     try {
       const response = await fetch(`${apiBaseUrl}/admin/signup`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password, address, phone, gender }),
       });
 
@@ -48,80 +46,49 @@ const SignUp = () => {
       }
 
       alert("User registered successfully!");
-      window.location.href = "/login";
+      navigate("/login");
     } catch (error) {
-      console.error("Error during sign up:", error);
-      alert(`Sign Up Error: ${error.message}`);
+      setErrorMessage(`Sign Up Error: ${error.message}`);
+    } finally {
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="signUp-page">
       <div className="signUp-container">
-        <form id="signUpForm" className="signUp-formParent">
+        <form onSubmit={handleSignUp} className="signUp-formParent">
           <h3>Sign Up with your Information</h3>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="signUp-inputGroup">
             <label htmlFor="signUpName">Name</label>
-            <input
-              type="text"
-              id="signUpName"
-              className="signUp-input"
-              placeholder="Enter name"
-              required
-            />
+            <input type="text" id="signUpName" name="signUpName" placeholder="Enter name" required />
           </div>
           <div className="signUp-inputGroup">
             <label htmlFor="signUpEmail">Email</label>
-            <input
-              type="email"
-              id="signUpEmail"
-              className="signUp-input"
-              placeholder="Enter email"
-              required
-            />
+            <input type="email" id="signUpEmail" name="signUpEmail" placeholder="Enter email" required />
           </div>
           <div className="signUp-inputGroup">
             <label htmlFor="signUpPassword">Password</label>
-            <input
-              type="password"
-              id="signUpPassword"
-              className="signUp-input"
-              placeholder="Enter password"
-              required
-            />
+            <input type="password" id="signUpPassword" name="signUpPassword" placeholder="Enter password" required />
           </div>
           <div className="signUp-inputGroup">
             <label htmlFor="signUpAddress">Address</label>
-            <input
-              type="text"
-              id="signUpAddress"
-              className="signUp-input"
-              placeholder="Enter address"
-            />
+            <input type="text" id="signUpAddress" name="signUpAddress" placeholder="Enter address" />
           </div>
           <div className="signUp-inputGroup">
             <label htmlFor="signUpPhone">Phone</label>
-            <input
-              type="text"
-              id="signUpPhone"
-              className="signUp-input"
-              placeholder="Enter phone number"
-            />
+            <input type="text" id="signUpPhone" name="signUpPhone" placeholder="Enter phone number" />
           </div>
           <div className="signUp-inputGroup">
             <label htmlFor="signUpGender">Gender</label>
-            <input
-              type="text"
-              id="signUpGender"
-              className="signUp-input"
-              placeholder="Enter gender"
-            />
+            <input type="text" id="signUpGender" name="signUpGender" placeholder="Enter gender" />
           </div>
-          <button type="submit" className="signUp-button">
-            Sign Up
+          <button type="submit" className="signUp-button" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Sign Up"}
           </button>
           <p>
-            Already have an account? <Link to="/login">Log in here</Link>
+            Already have an account? <a href="/login">Log in here</a>
           </p>
         </form>
       </div>
