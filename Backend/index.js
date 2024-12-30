@@ -28,8 +28,8 @@ app.get("/varad", (req, res) => {
 app.listen(PORT, async () => {
   try {
     await connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log(`Server started on http://localhost:${PORT}`);
+    // console.log(`Server started on http://localhost:${PORT}`);
   } catch (error) {
-    console.error("Failed to connect to the database:", error);
+    console.log("Failed to connect to the database:", error);
   }
 });

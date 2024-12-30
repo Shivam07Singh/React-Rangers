@@ -103,7 +103,7 @@ const resetpassword = async (req, res) => {
       resetPassExpires: { $gt: Date.now() },
     });
     user.password = await argon2.hash(newPassword);
-    console.log(user.password);
+    // console.log(user.password);
     user.refreshToken = undefined;
     user.resetPassExpires = undefined;
     await user.save();

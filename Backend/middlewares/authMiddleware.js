@@ -24,7 +24,7 @@ export const authMiddleware = (req, res, next) => {
 
     // Attach admin ID to response locals for further processing
     res.locals.adminId = decoded.id;
-    console.log(`Authenticated Admin ID: ${decoded.id}`);
+    // console.log(`Authenticated Admin ID: ${decoded.id}`);
 
     // Proceed to the next middleware or route handler
     next();
