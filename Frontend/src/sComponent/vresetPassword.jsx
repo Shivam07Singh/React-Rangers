@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
   const [token, setToken] = useState(""); // State to store the token
   const [newPassword, setNewPassword] = useState("");
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+  const navigate = useNavigate();
 
   // Extract token from the URL query string
   useEffect(() => {
@@ -15,7 +18,7 @@ const ResetPassword = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:2024/admin/resetpassword", {
+      const response = await fetch(`${apiBaseUrl}/admin/resetpassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,7 +33,8 @@ const ResetPassword = () => {
       }
 
       alert(result.msg);
-      window.location.href = "/login"; // Redirect to login page
+      navigate("/login")
+
     } catch (error) {
       console.error("Error during password reset:", error);
       alert(`Error: ${error.message}`);

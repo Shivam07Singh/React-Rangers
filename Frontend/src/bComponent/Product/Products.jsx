@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Products() {
 
   const navigate = useNavigate();
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const [products, setProducts] = useState([
     {
@@ -117,13 +118,12 @@ function Products() {
 
       // Ensure the token exists before making the request
       if (!token) {
-        alert("No token found. Redirecting to login...");
         navigate("/login");
         return;
       }
 
       // Send the request with the Authorization header
-      const response = await fetch("http://localhost:2024/website/product", {
+      const response = await fetch(`${apiBaseUrl}/website/product`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

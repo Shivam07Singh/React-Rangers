@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useNavigate, } from "react-router-dom";
-import "./Login.css";
+import "./vlogin.css";
 
 const Login = () => {
   let navigate = useNavigate()
@@ -13,6 +13,7 @@ const Login = () => {
       .addEventListener("submit", login);
   }, []);
 
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
   async function login(event) {
     event.preventDefault();
     const email = document.getElementById("email").value;
@@ -27,14 +28,14 @@ const Login = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:2024/admin/login", requestOptions);
+      const response = await fetch(`${apiBaseUrl}/admin/login`, requestOptions);
       const data = await response.json();
       if (response.ok) {
         // Store the token in localStorage or cookies
         localStorage.setItem("token", data.token);
         alert("Login successful");
 
-        
+
         navigate("/dashboard")
 
 

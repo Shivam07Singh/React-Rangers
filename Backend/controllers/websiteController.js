@@ -2,11 +2,11 @@ import { adminData } from "../models/adminModel.js";
 
 const websiteController = async (req, res) => {
     let adminId = res.locals.adminId;
-    console.log("adminsed in website", adminId)
+    // console.log("adminsed in website", adminId)
     try {
         const { editingHeroState, products } = req.body;
 
-        console.log(editingHeroState, products)
+        // console.log(editingHeroState, products)
         if (!editingHeroState || !products) {
             return res.status(400).json({
                 message: "Both websitenu and websiteData are required in the request body."
@@ -34,7 +34,7 @@ const websiteController = async (req, res) => {
 
         // Add the website entry to the admin's websites array
 
-        console.log(websiteEntry)
+        // console.log(websiteEntry)
 
         admin.websites.push(websiteEntry);
 
@@ -50,7 +50,7 @@ const websiteController = async (req, res) => {
 
 const websiteget = async (req, res) => {
     let adminId = res.locals.adminId;
-    console.log("Admin ID in website controller", adminId)
+    // console.log("Admin ID in website controller", adminId)
 
     try {
         // Find the admin by ID
@@ -69,7 +69,7 @@ const websiteget = async (req, res) => {
 const updateProductController = async (req, res) => {
     let adminId = res.locals.adminId;
     const { id } = req.params;
-    console.log("Updating product for admin:", adminId, "Product ID:", id);
+    // console.log("Updating product for admin:", adminId, "Product ID:", id);
 
     try {
         const { editingHeroState, products } = req.body;

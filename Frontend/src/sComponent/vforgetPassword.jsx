@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import "./ForgetPassword.css";
+import "./vforgetPassword.css";
+import { useNavigate } from "react-router-dom";
 
 const ForgetPassword = () => {
   const [email, setEmail] = useState("");
+  const apiBaseUrl = import.meta.env.VITE_API_BASE_URL;
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -13,7 +16,7 @@ const ForgetPassword = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:2024/admin/forgetpassword", {
+      const response = await fetch(`${apiBaseUrl}/admin/forgetpassword`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +31,7 @@ const ForgetPassword = () => {
       }
 
       alert(result.msg);
-      window.location.href = "/login";
+      navigate("/login");
     } catch (error) {
       console.error("Error during password reset:", error);
       alert(`Error: ${error.message}`);

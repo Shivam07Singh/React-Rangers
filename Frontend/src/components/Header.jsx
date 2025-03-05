@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react"; // Added useState import
 import { Link, useNavigate } from "react-router-dom";
 import image from "../assets/WebBuilder1.jpg";
 
@@ -13,6 +13,12 @@ const Header = () => {
     navigate("/dashboard"); // Navigate to the dashboard page
   };
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Correct use of useState
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="header">
       <div className="logo">
@@ -20,40 +26,45 @@ const Header = () => {
           <img src={image} alt="Web Builder" />
         </Link>
       </div>
-      <nav >
-        <ul>
+      <div className="hamburger" onClick={toggleMenu}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav>
+        <ul className={isMenuOpen ? "open" : ""}>
           <li>
-            <Link to="/" style={{ color: "black" }}>
+            <Link to="/" style={{ color: "black" }} onClick={toggleMenu}>
               Home
             </Link>
           </li>
           <li>
-            <Link to="/blog" style={{ color: "black" }}>
+            <Link to="/blog" style={{ color: "black" }} onClick={toggleMenu}>
               Blog
             </Link>
           </li>
           <li>
-            <Link to="/contact" style={{ color: "black" }}>
+            <Link to="/contact" style={{ color: "black" }} onClick={toggleMenu}>
               Contact Us
             </Link>
           </li>
           <li>
-            <Link to="/about" style={{ color: "black" }}>
+            <Link to="/about" style={{ color: "black" }} onClick={toggleMenu}>
               About
             </Link>
           </li>
+          <li>
+            <button className="btn" onClick={handleLoginClick}>
+              Login
+            </button>
+          </li>
+          <li>
+            <button className="btn" onClick={handleGetStartedClick}>
+              Get Started
+            </button>
+          </li>
         </ul>
       </nav>
-      <div
-        style={{ display: "flex", gap: 10, justifyContent: "space-between", alignItems: "center" }}
-      >
-        <button className="btn" onClick={handleLoginClick}>
-          Login
-        </button>
-        <button className="btn" onClick={handleGetStartedClick}>
-          Get Started
-        </button>
-      </div>
     </header>
   );
 };
