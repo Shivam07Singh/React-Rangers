@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 // User Authentication Components
 import Login from "./sComponent/login.jsx"
 import SignUp from "./sComponent/SignUp";
-import ForgetPassword from "./sComponent/ForgetPassword";
+import ForgetPassword from "./sComponent/forgetPassword.jsx";
 import ResetPassword from "./sComponent/ResetPassword";
 
 // Main Pages

@@ -46,7 +46,7 @@ const login = async (req, res) => {
           name: user.name,
         },
         process.env.JWT_LOGIN,
-        { expiresIn: "1h" }
+        { expiresIn: "24h" }
       );
       res.status(200).json({ token });
     } else {
