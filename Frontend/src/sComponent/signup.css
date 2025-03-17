@@ -50,9 +50,9 @@ label {
   font-weight: bold;
 }
 
-.signUp-input {
+.signUp-container input {
   width: 100%;
-  padding: 12px;
+  padding: 20px;
   margin-bottom: 10px;
   border: 1px solid #cccccc;
   border-radius: 8px;
