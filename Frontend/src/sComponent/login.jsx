@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useNavigate, } from "react-router-dom";
-import "./vlogin.css";
+import "./login.css";
 
 const Login = () => {
   let navigate = useNavigate()

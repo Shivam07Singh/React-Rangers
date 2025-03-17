@@ -32,7 +32,6 @@ import ContactC from "./bComponent/Construction/Contact.jsx";
 import AboutH from "./bComponent/Hotel/About.jsx";
 import ContactH from "./bComponent/Hotel/Contact.jsx";
 import AdminProducts from "./bComponent/Product/adminProducts.jsx";
-import SignUp from "./sComponent/vsignup.jsx";
 
 
 export default function App() {
@@ -48,7 +47,7 @@ export default function App() {
 
           {/* User Authentication */}
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup" element={<SignUp/>} />
           <Route path="/forget" element={<ForgetPassword />} />
           <Route path="/admin/resetpassword" element={<ResetPassword />} />
 
