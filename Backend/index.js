@@ -21,9 +21,9 @@ app.use("/website", websiteRoutes);
 
 app.use(authMiddleware);
 
-app.get("/varad", (req, res) => {
-  res.send("authMiddleware varad");
-});
+// app.get("/varad", (req, res) => {
+//   res.send("authMiddleware varad");
+// });
 
 app.listen(PORT, async () => {
   try {

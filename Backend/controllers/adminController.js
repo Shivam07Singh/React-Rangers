@@ -15,12 +15,23 @@ const signUp = async (req, res) => {
 
     const user = new adminData({
       password: hashedPass,
-      name, email, address, phone, gender
+      name,
+      email,
+      address,
+      phone,
+      gender,
     });
 
     await user.save();
+    
     res.status(200).json({
-      user: { name: user.name, email: user.email, address: user.address, phone: user.phone, gender: user.gender },
+      user: {
+        name: user.name,
+        email: user.email,
+        address: user.address,
+        phone: user.phone,
+        gender: user.gender,
+      },
       msg: "Signup Successfully",
     });
   } catch (error) {
@@ -57,16 +68,12 @@ const login = async (req, res) => {
   }
 };
 
-
 const forgetpassword = async (req, res) => {
   try {
     const { email } = req.body;
     const user = await adminData.findOne({ email });
     const refreshToken = crypto.randomBytes(32).toString("hex");
-    const tokenhash = crypto
-      .createHash("sha256")
-      .update(refreshToken)
-      .digest("hex");
+    const tokenhash = crypto.createHash("sha256").update(refreshToken).digest("hex");
     user.refreshToken = tokenhash;
     user.resetPassExpires = Date.now() + 3600000;
     await user.save();
@@ -92,7 +99,6 @@ const forgetpassword = async (req, res) => {
     res.status(500).json(error);
   }
 };
-
 
 const resetpassword = async (req, res) => {
   try {

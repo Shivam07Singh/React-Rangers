@@ -3,7 +3,7 @@ import { login, signUp, forgetpassword, resetpassword } from "../controllers/adm
 
 const adminRouter = express.Router();
 
-adminRouter.post("/signUp", signUp);
+adminRouter.post("/signup", signUp);
 adminRouter.post("/login", login);
 adminRouter.post("/forgetpassword", forgetpassword);
 adminRouter.post("/resetpassword", resetpassword);
