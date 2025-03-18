@@ -496,11 +496,10 @@ nav ul li:hover {
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
-  /* Allow wrapping for smaller screens */
+  padding: 20px 0;
   gap: 20px;
-  /* Add spacing between items */
   justify-content: center;
-  /* Center content */
+  background-color: #f4f4f4;
 }
 
 .footer-logo img {
