@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 // User Authentication Components
 import Login from "./sComponent/login.jsx"
-import SignUp from "./sComponent/SignUp";
+import SignUp from "./sComponent/signup.jsx";
 import ForgetPassword from "./sComponent/forgetPassword.jsx";
-import ResetPassword from "./sComponent/ResetPassword";
+import ResetPassword from "./sComponent/resetPassword.jsx";
 
 // Main Pages
 import Landingpage from "./components/Landingpage.jsx";
