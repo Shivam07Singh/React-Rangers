@@ -9,7 +9,7 @@ import cors from "cors";
 import { websiteRoutes } from "./routes/websiteRoutes.js";
 
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 app.use(cors({ origin: process.env.CORS_ORIGIN.split(",") }));
 
@@ -21,13 +21,9 @@ app.use("/website", websiteRoutes);
 
 app.use(authMiddleware);
 
-// app.get("/varad", (req, res) => {
-//   res.send("authMiddleware varad");
-// });
-
 app.listen(PORT, async () => {
   try {
-    await connect(process.env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+    await connect(process.env.DB_URL);
     // console.log(`Server started on http://localhost:${PORT}`);
   } catch (error) {
     console.log("Failed to connect to the database:", error);
