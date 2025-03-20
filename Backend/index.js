@@ -24,7 +24,8 @@ app.use(authMiddleware);
 app.listen(PORT, async () => {
   try {
     await connect(process.env.DB_URL);
-    // console.log(`Server started on http://localhost:${PORT}`);
+    console.log("DataBase Connected");
+    console.log(`Server started on http://localhost:${PORT}`);
   } catch (error) {
     console.log("Failed to connect to the database:", error);
   }
