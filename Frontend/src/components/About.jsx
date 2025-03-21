@@ -169,7 +169,7 @@ const About = () => {
           <img
             style={{ width: "100%", height: "100%" }}
             src={
-              "https://www.yola.com/ws/media-library/f17171155468416785cb8d6c0aede2f4/istock-1284106261-1.webp"
+              "https://www.yola.com/ws/media-library/697fe700aa2842fc8d51716487ba1af3/daria-pimkina-rtg1epz2wti-unsplash-2-1.webp"
             }
           />
         </div>
@@ -195,7 +195,7 @@ const About = () => {
           <img
             style={{ width: "100%", height: "100%" }}
             src={
-              "https://www.yola.com/ws/media-library/bcbfdb974a19471cb3b8bd32f6b6c17d/istock-1270821597.webp"
+              "https://www.yola.com/ws/media-library/697fe700aa2842fc8d51716487ba1af3/daria-pimkina-rtg1epz2wti-unsplash-2-1.webp"
             }
           />
         </div>
